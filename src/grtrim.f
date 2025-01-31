@@ -28,10 +28,12 @@ C
       IF (S.EQ.' ') THEN
           GRTRIM = 0
       ELSE
-          DO 10 I=LEN(S),1,-1
+          DO I=LEN(S),1,-1
               GRTRIM = I
-              IF (S(I:I).NE.' ') GOTO 20
-   10     CONTINUE
+              IF (S(I:I).NE.' ') THEN
+                  GOTO 20
+              END IF
+          END DO
           GRTRIM = 0
    20     CONTINUE
       END IF

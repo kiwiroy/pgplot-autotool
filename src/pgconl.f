@@ -74,9 +74,9 @@ C
 C
 C Save TRANS matrix and other parameters.
 C
-      DO 10 I=1,6
+      DO I=1,6
           TRANS(I) = TR(I)
-   10 CONTINUE
+      END DO
       PGCINT = INTVAL
       PGCMIN = MININT
       PGCLAB = LABEL
