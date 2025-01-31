@@ -94,7 +94,7 @@ for my $file (@files) {
 # Standard header
 my @lines = <DATA>;
 push(@lines, "      PARAMETER (NDEV=$ndev)\n");
-push(@lines, "      CHARACTER*10 MSG\n");
+push(@lines, "      CHARACTER(LEN=10) MSG\n");
 push(@lines, "C----\n");
 push(@lines, "      IF (IDEV .EQ. 0) THEN\n");
 push(@lines, "          RBUF(1) = NDEV\n");

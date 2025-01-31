@@ -92,10 +92,10 @@ C
       CALL PGBBUF
       IF (PGTBCI(PGID).GE.0) THEN
           CALL GRQTXT (ANGLE, X, Y, TEXT(1:L), XBOX, YBOX)
-          DO 25 I=1,4
+          DO I=1,4
               XBOX(I) = (XBOX(I)-PGXORG(PGID))/PGXSCL(PGID)
               YBOX(I) = (YBOX(I)-PGYORG(PGID))/PGYSCL(PGID)
-   25     CONTINUE
+          END DO
           CALL PGQCI(CI)
           CALL PGSCI(PGTBCI(PGID))
           CALL GRFA(4, XBOX, YBOX)
@@ -103,4 +103,4 @@ C
       END IF
       CALL GRTEXT(.FALSE.,ANGLE,.TRUE., X, Y, TEXT(1:L))
       CALL PGEBUF
-      END
+      END SUBROUTINE PGMTXT
