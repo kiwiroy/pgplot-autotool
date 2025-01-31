@@ -14,7 +14,7 @@ C-----------------------------------------------------------------------
       REAL Z(MX,*)
       REAL Z0, X, Y, STARTX, STARTY
       EXTERNAL PLOT
-      MY = MY
+      IF (.FALSE.) PRINT *, MY ! silence unused-dummy-variable
 C
       I = IS
       J = JS

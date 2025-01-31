@@ -49,7 +49,7 @@ C-----------------------------------------------------------------------
       REAL      RBUF(6)
       LOGICAL   APPEND
       CHARACTER(LEN=90) FFILE,CHR
-      DUMMY = DUMMY
+      IF (.FALSE.) PRINT *, DUMMY ! silence unused-dummy-variable
 C
 C Initialize GRPCKG; read font file (if necessary).
 C

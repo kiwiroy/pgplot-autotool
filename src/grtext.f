@@ -38,7 +38,7 @@ C-----------------------------------------------------------------------
       INTRINSIC ABS, COS, LEN, MIN, SIN
       CHARACTER DEVTYP*14, STEMP*258
       LOGICAL DEVINT, VTEXT
-      SAVE CENTER
+      IF (.FALSE.) PRINT *, CENTER ! silence unused-dummy-variable
 C
 C Check that there is something to be plotted.
 C

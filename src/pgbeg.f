@@ -49,7 +49,7 @@ C 27-Feb-1997 [TJP] - updated description.
 C-----------------------------------------------------------------------
       INTEGER       IER
       INTEGER       PGOPEN
-      UNIT = UNIT
+      IF (.FALSE.) PRINT *, UNIT ! silence unused-dummy-variable
 C
 C Initialize PGPLOT if necessary.
 C

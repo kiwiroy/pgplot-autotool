@@ -539,7 +539,7 @@ C-----------------------------------------------------------------------
       REAL      RTMP(4)
       DATA      LBUF/0/
 C
-      UNIT = UNIT
+      IF (.FALSE.) PRINT *, UNIT ! silence unused-dummy-variable
       LIN = LEN(CIN)
       IF(LIN.GT.0) THEN
          IF(LBUF+LIN+1.GE.LEN(CBUF)) THEN
