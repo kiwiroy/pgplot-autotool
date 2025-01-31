@@ -17,7 +17,7 @@ C           user's terminal; .FALSE. otherwise.
 C--
 C 18-Feb-1988
 C-----------------------------------------------------------------------
-      CHARACTER*64 T
+      CHARACTER(LEN=64) T
       INTEGER L
 C
       CALL GRTRML(T, L)

@@ -18,7 +18,7 @@ C 11-Nov-1994
 C 21-Dec-1995 - revised for multiple devices.
 C-----------------------------------------------------------------------
       INCLUDE  'pgplot.inc'
-      CHARACTER*80 TEXT
+      CHARACTER(LEN=80) TEXT
 C
       CALL PGINIT
       PGNOTO = .FALSE.

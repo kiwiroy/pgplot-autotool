@@ -30,8 +30,8 @@ C
       SAVE     RVALUE,        GVALUE,        BVALUE
       INTEGER  OP(0:255)
       SAVE     OP
-      CHARACTER*120 INSTR, MSG
-      CHARACTER*255 FNAME
+      CHARACTER(LEN=120) INSTR, MSG
+      CHARACTER(LEN=255) FNAME
       SAVE          FNAME
       REAL          RINIT(0:15), GINIT(0:15), BINIT(0:15)
       SAVE          RINIT,       GINIT,       BINIT

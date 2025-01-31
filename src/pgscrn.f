@@ -60,8 +60,8 @@ C-----------------------------------------------------------------------
       INTEGER I, IR, IG, IB, J, L, NCOL, UNIT, IOS
       INTEGER GRCTOI, GROPTX, GRTRIM
       REAL RR(MAXCOL), RG(MAXCOL), RB(MAXCOL)
-      CHARACTER*20 CREQ, CNAME(MAXCOL)
-      CHARACTER*255 TEXT
+      CHARACTER(LEN=20) CREQ, CNAME(MAXCOL)
+      CHARACTER(LEN=255) TEXT
       SAVE NCOL, CNAME, RR, RG, RB
       DATA NCOL/0/
 C

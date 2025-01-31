@@ -55,15 +55,15 @@ C-----------------------------------------------------------------------
       CHARACTER*(*) TYPE, DEFNAM
       PARAMETER (TYPE='HPGL2 (Hewlett-Packard graphics)')
       PARAMETER (DEFNAM='pgplot.hpplot')
-      CHARACTER*1 FF, EC
+      CHARACTER(LEN=1) FF, EC
 C
       LOGICAL START, PEON
       INTEGER GROPTX
       INTEGER UNIT, IER, IC, NPTS, PCT, NREL
       INTEGER I0, J0, I1, J1, L, L1, L2, LASTI, LASTJ, LOBUF
       REAL LW
-      CHARACTER*80 INSTR, MSG, DUMMY, DUMMY1, DUMMY2
-      CHARACTER*132 OBUF
+      CHARACTER(LEN=80) INSTR, MSG, DUMMY, DUMMY1, DUMMY2
+      CHARACTER(LEN=132) OBUF
       SAVE UNIT, IC, LASTI, LASTJ, LOBUF, OBUF, PEON, NREL
       SAVE FF, EC
 C-----------------------------------------------------------------------

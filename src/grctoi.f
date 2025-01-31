@@ -24,7 +24,7 @@ C  1985 Oct  8 - New routine, based on CTOI (T. J. Pearson).
 C  1997 Jun  3 - allow leading + or - sign (TJP).
 C-----------------------------------------------------------------------
       INTEGER K, SIGN, X
-      CHARACTER*1 DIGITS(0:9)
+      CHARACTER(LEN=1) DIGITS(0:9)
       DATA  DIGITS/'0','1','2','3','4','5','6','7','8','9'/
 C
       X = 0

@@ -40,7 +40,7 @@ C-----------------------------------------------------------------------
 C
       INTEGER UNIT, IER, IC, BX, BY, NPICT
       INTEGER GRGMEM, GRFMEM
-      CHARACTER*10 MSG
+      CHARACTER(LEN=10) MSG
       INTEGER BITMAP, OUTREC
 C-----------------------------------------------------------------------
 C
@@ -352,7 +352,7 @@ C-----------------------------------------------------------------------
       BYTE INIT(5), RESET(5)
       DATA INIT  / ESC, RS, 8, ESC, '>' /
       DATA RESET / ESC, RS, 9, ESC, '<' /
-      CHARACTER*4 D
+      CHARACTER(LEN=4) D
 C
 C Check preconditions (internal check).
 C

@@ -37,7 +37,7 @@ C  7-Sep-1994 - use PGBAND [TJP].
 C  2-Aug-1995 - remove dependence on common block [TJP].
 C-----------------------------------------------------------------------
       LOGICAL  PGNOTO
-      CHARACTER*1 LETTER
+      CHARACTER(LEN=1) LETTER
       INTEGER  PGBAND, I, SAVCOL, MODE
       REAL     XP, YP, XREF, YREF
       REAL     XBLC, XTRC, YBLC, YTRC

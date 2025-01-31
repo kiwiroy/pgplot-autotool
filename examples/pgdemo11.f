@@ -35,7 +35,7 @@ C   NT is the number of frames in the animation.
 C Variables:
       REAL X(0:N), Y(0:N)
       INTEGER I, T, L
-      CHARACTER*8 STR
+      CHARACTER(LEN=8) STR
       INTEGER PGBEG
 C-----------------------------------------------------------------------
 

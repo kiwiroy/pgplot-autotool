@@ -18,7 +18,7 @@ C  5-Aug-1986 - add GREXEC support [AFT].
 C 11-Jun-1987 - remove built-in devices [TJP].
 C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
-      CHARACTER*1   CHR
+      CHARACTER(LEN=1)   CHR
       REAL    RBUF(6)
       INTEGER NBUF,LCHR
 C

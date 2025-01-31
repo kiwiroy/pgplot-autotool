@@ -16,7 +16,7 @@ C 19-Feb-1988 - add quotes if necessary.
 C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       CHARACTER*(*) DEVICE
-      CHARACTER*14 TYPE
+      CHARACTER(LEN=14) TYPE
       LOGICAL   JUNK
       INTEGER   L
 C

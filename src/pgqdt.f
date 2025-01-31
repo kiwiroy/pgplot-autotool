@@ -32,7 +32,7 @@ C 17-Mar-1997 - new routine [TJP].
 C-----------------------------------------------------------------------
       INTEGER NDEV, NBUF, LCHR, L1, L2
       REAL RBUF
-      CHARACTER*80 CHR
+      CHARACTER(LEN=80) CHR
 C
 C Initialize PGPLOT if necessary.
 C

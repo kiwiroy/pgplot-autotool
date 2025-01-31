@@ -45,10 +45,10 @@ C-----------------------------------------------------------------------
       INTEGER INCR, NINC, IER, ISIGN, LENGTH, BX, BY, STATE
       INTEGER GROPTX
       REAL X1, Y1, X2, Y2, DELX, DELY, SLOPE
-      CHARACTER*128 MSG
+      CHARACTER(LEN=128) MSG
       CHARACTER*(*) DEVNAM
       PARAMETER (DEVNAM='LATEX (LaTeX picture environment)')
-      CHARACTER*1   BS
+      CHARACTER(LEN=1)   BS
       SAVE LUN, BS, BX, BY, STATE
 C-----------------------------------------------------------------------
       GOTO(10,20,30,40,50,60,70,80,90,100,110,120,130,140)OPCODE

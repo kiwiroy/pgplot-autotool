@@ -25,7 +25,7 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       REAL    RBUF(6)
       INTEGER NBUF,LCHR
-      CHARACTER*32 CHR
+      CHARACTER(LEN=32) CHR
       REAL    XMIN, YMIN, XMAX, YMAX, Y, DY
       INTEGER LS, LW, I, NLINES
 C

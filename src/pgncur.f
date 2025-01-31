@@ -40,7 +40,7 @@ C 13-Dec-1990 - changed warnings to messages [TJP].
 C  2-Aug-1995 - [TJP].
 C-----------------------------------------------------------------------
       INCLUDE  'pgplot.inc'
-      CHARACTER*1 LETTER
+      CHARACTER(LEN=1) LETTER
       LOGICAL  PGNOTO
       INTEGER  PGCURS, I, J, SAVCOL
       REAL     DELTA, XP, YP, XPHYS, YPHYS

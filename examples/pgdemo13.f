@@ -103,7 +103,7 @@ C Display menu of plots.
 C-----------------------------------------------------------------------
       INTEGER NBOX
       PARAMETER (NBOX=16)
-      CHARACTER*12 VALUE(NBOX)
+      CHARACTER(LEN=12) VALUE(NBOX)
       INTEGER I, JUNK, K
       REAL X1, X2, Y(NBOX), XX, YY, R
       CHARACTER CH
@@ -425,7 +425,7 @@ C----------------------------------------------------------------------
       PARAMETER (NPOL=6)
       INTEGER I, J, N1(NPOL), N2(NPOL), K
       REAL X(10), Y(10), Y0, ANGLE
-      CHARACTER*32 LAB(4)
+      CHARACTER(LEN=32) LAB(4)
       DATA N1 / 3, 4, 5, 5, 6, 8 /
       DATA N2 / 1, 1, 1, 2, 1, 3 /
       DATA LAB(1) /'Fill style 1 (solid)'/
@@ -861,7 +861,7 @@ C----------------------------------------------------------------------
       PARAMETER (N=10)
       INTEGER I
       REAL X1(N), X2(N)
-      CHARACTER*20 XOPT(N), BSL*1
+      CHARACTER(LEN=20) XOPT(N), BSL*1
       DATA X1 /   4*0.0, -8000.0, 100.3, 205.3, -45000.0, 2*0.0/
       DATA X2 /4*8000.0,  8000.0, 101.3, 201.1, 3*-100000.0/
       DATA XOPT / 'BSTN', 'BSTNZ', 'BSTNZH', 'BSTNZD', 'BSNTZHFO', 

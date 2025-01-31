@@ -10,7 +10,7 @@ C
       REAL VALS(NCAT, NSET)
       REAL VALS2(NCAT, 3)
       REAL VALS3(12)
-      CHARACTER*12 LABS(NCAT), LABS3(12)
+      CHARACTER(LEN=12) LABS(NCAT), LABS3(12)
       REAL VMIN, VMAX
       DATA VALS /15, 2, 3, 45, 17,
      :           14, 1, 2, 44, 16/

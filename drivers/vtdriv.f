@@ -160,10 +160,10 @@ C
       REAL     CH, CL, CS
       CHARACTER*(BUFSIZ) BUFFER
       SAVE BUFFER
-      CHARACTER*80  CTEMP
-      CHARACTER*64  INSTR
-      CHARACTER*20  INSTR1,INSTR2
-      CHARACTER*2   PIX(0:22)
+      CHARACTER(LEN=80)  CTEMP
+      CHARACTER(LEN=64)  INSTR
+      CHARACTER(LEN=20)  INSTR1,INSTR2
+      CHARACTER(LEN=2)   PIX(0:22)
       SAVE PIX
       DATA PIX    /'V5','V4','V3',7*'  ','V6',' ','V2',7*' ','V7',
      1             'V0','V1'/

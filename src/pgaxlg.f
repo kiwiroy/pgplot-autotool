@@ -52,7 +52,7 @@ C-----------------------------------------------------------------------
       REAL V, VMIN, VMAX, DVMAJ, DVMIN, PGRND
       INTEGER I, K, K1, K2, LLAB, NSUBT, CLIP, FORM
       LOGICAL XLAB, OPTN
-      CHARACTER*32 LABEL
+      CHARACTER(LEN=32) LABEL
       REAL TAB(9)
 C
 C Table of logarithms 1..9

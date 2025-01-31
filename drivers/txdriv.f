@@ -1217,7 +1217,7 @@ C  LUN           (input)  contains a list of the device numbers already
 C                         allocated to enable error checking.
 C-----------------------------------------------------------------------
       INTEGER  I,J,IER,ITEMPV,IRECRD,ILENGT
-      CHARACTER*10 MSG
+      CHARACTER(LEN=10) MSG
 C-----------------------------------------------------------------------
 C                                       Set up initial record to first record.
        IRECRD=1
@@ -2050,7 +2050,7 @@ C ***
       INTEGER WHITE,IPERCR,IPERCL,IXBBLL,IXBBUR
       BYTE BITMAP(0:IBXDIM-1,0:IBYDIM-1),SOLBLK,SOLWHT
       LOGICAL LSOLID,LBLACK,LIBLAK,LTX05E
-      CHARACTER*3 MSG
+      CHARACTER(LEN=3) MSG
 C *** PORTABILITY NOTES:
 C *** Note: {Vax byte variables are from -128 to 127.  
 C *** ??Parameter statement might need to be modified for SOLBLK=255

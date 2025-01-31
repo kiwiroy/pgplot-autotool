@@ -58,9 +58,9 @@ C-----------------------------------------------------------------------
       PARAMETER (MAXD1=MAXDEV+1)
       INTEGER NOPCOD
       PARAMETER (NOPCOD=29)
-      CHARACTER*10 MSG
-      CHARACTER*32 TEXT
-      CHARACTER*8  LAB(NOPCOD)
+      CHARACTER(LEN=10) MSG
+      CHARACTER(LEN=32) TEXT
+      CHARACTER(LEN=8)  LAB(NOPCOD)
       INTEGER COUNT(NOPCOD), I, STATE(0:MAXDEV), L, NPIC(MAXDEV)
       INTEGER ACTIVE
       LOGICAL DEBUG
@@ -372,7 +372,7 @@ C
 C PGPLOT NULL device driver: report error
 C-----------------------------------------------------------------------
       INTEGER L
-      CHARACTER*80 MSG
+      CHARACTER(LEN=80) MSG
 C
       CALL GRFAO('++ internal error: driver in state # for opcode #',
      :           L, MSG, STATE, IFUNC, 0, 0)

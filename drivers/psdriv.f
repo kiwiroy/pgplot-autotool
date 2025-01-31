@@ -181,11 +181,11 @@ C
       SAVE     BBXMIN, BBXMAX, BBYMIN, BBYMAX
       REAL     RVALUE(0:255), GVALUE(0:255), BVALUE(0:255)
       SAVE     RVALUE,        GVALUE,        BVALUE
-      CHARACTER*20  SUSER, SDATE
-      CHARACTER*120 INSTR, MSG
-      CHARACTER*132 OBUF
+      CHARACTER(LEN=20)  SUSER, SDATE
+      CHARACTER(LEN=120) INSTR, MSG
+      CHARACTER(LEN=132) OBUF
       SAVE          OBUF
-      CHARACTER*255 FNAME
+      CHARACTER(LEN=255) FNAME
       SAVE          FNAME
       INTEGER       MARKER(0:31), NSYM, RAD(0:31)
       SAVE          MARKER, RAD
@@ -193,7 +193,7 @@ C
       SAVE          MFAC
       REAL          SHADE(0:15), RINIT(0:15), GINIT(0:15), BINIT(0:15)
       SAVE          SHADE,       RINIT,       GINIT,       BINIT
-      CHARACTER*1   HEXDIG(0:15)
+      CHARACTER(LEN=1)   HEXDIG(0:15)
       DATA HEXDIG/'0','1','2','3','4','5','6','7',
      1            '8','9','A','B','C','D','E','F'/
       DATA SHADE /1.00, 13*0.00, 0.33, 0.67/
@@ -894,7 +894,7 @@ C
 C Write PostScript instructions for drawing graph marker number NSYM
 C on Fortran unit UNIT.
 C-----------------------------------------------------------------------
-      CHARACTER*80 T(6)
+      CHARACTER(LEN=80) T(6)
       INTEGER I, N
 C
       IF (NSYM.LT.0 .OR. NSYM.GT.31) RETURN

@@ -48,7 +48,7 @@ C-----------------------------------------------------------------------
       INTEGER   GRPARS, GRTRIM
       REAL      RBUF(6)
       LOGICAL   APPEND
-      CHARACTER*128 FFILE,CHR
+      CHARACTER(LEN=128) FFILE,CHR
 C
 C Initialize GRPCKG; read font file (if necessary).
 C

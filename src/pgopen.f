@@ -97,9 +97,9 @@ C-----------------------------------------------------------------------
       INTEGER       DEFTYP,GRDTYP,GROPEN,L,LR,IC1, LPROMP
       INTEGER       GRGCOM, IER, LDEFDE, UNIT, ISTAT
       REAL          DUMMY,DUMMY2,XCSZ, XSZ, YSZ
-      CHARACTER*128 DEFDEV, PROMPT
-      CHARACTER*20  DEFSTR
-      CHARACTER*256 REQ
+      CHARACTER(LEN=128) DEFDEV, PROMPT
+      CHARACTER(LEN=20)  DEFSTR
+      CHARACTER(LEN=256) REQ
       LOGICAL JUNK
 C
 C Initialize PGPLOT if necessary.

@@ -19,7 +19,7 @@ C--
 C-----------------------------------------------------------------------
       INCLUDE     'pgplot.inc'
       LOGICAL     PGNOTO
-      CHARACTER*1 TYPE
+      CHARACTER(LEN=1) TYPE
 C
       IF (PGNOTO('PGASK')) RETURN
 C

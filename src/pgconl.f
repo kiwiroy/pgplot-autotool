@@ -7,7 +7,7 @@ C+
      1                   LABEL, INTVAL, MININT)
       INTEGER IDIM, JDIM, I1, J1, I2, J2, INTVAL, MININT
       REAL A(IDIM,JDIM), C, TR(6)
-      CHARACTER*(*) LABEL
+      CHARACTER(LEN=*) :: LABEL
 C
 C Label a contour map drawn with routine PGCONT. Routine PGCONT should
 C be called first to draw the contour lines, then this routine should be

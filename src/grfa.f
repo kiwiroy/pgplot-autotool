@@ -47,7 +47,7 @@ C-----------------------------------------------------------------------
       PARAMETER (MAXSEC=32)
       INTEGER I, J, NSECT, LW, LS, NBUF, LCHR, LINE
       REAL    RBUF(6)
-      CHARACTER*32 CHR
+      CHARACTER(LEN=32) CHR
       REAL    X(MAXSEC), Y, YMIN, YMAX, DY, YD, TEMP, S1, S2, T1, T2
       LOGICAL FORWD
 C

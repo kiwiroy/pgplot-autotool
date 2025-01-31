@@ -25,7 +25,7 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       REAL    RBUF(6)
       INTEGER NBUF,LCHR
-      CHARACTER*32 CHR
+      CHARACTER(LEN=32) CHR
 C
       IF (GRCIDE.LT.1) THEN
           CALL GRWARN('GRQTYP - no graphics device is active.')

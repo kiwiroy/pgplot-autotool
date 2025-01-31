@@ -13,7 +13,7 @@ C  STATUS (input): 32-bit system message code.
 C--
 C 18-Feb-1988
 C-----------------------------------------------------------------------
-      CHARACTER*10 BUFFER
+      CHARACTER(LEN=10) BUFFER
 C
       WRITE (BUFFER, '(I10)') STATUS
       CALL GRWARN('system message number: '//BUFFER)

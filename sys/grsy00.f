@@ -64,7 +64,7 @@ C
       INTEGER    FNTFIL, IER, INDEX(MAXCHR), NC1, NC2, NC3
       INTEGER    L, GRTRIM, I
       COMMON     /GRSYMB/ NC1, NC2, INDEX, BUFFER
-      CHARACTER*128 FF
+      CHARACTER(LEN=128) FF
 C
 C Read the font file. If an I/O error occurs, it is ignored; the
 C effect will be that all symbols will be undefined (treated as 

@@ -17,7 +17,7 @@ C--
 C 22-Dec-1995 - new routine, derived from the old PGEND.
 C-----------------------------------------------------------------------
       INCLUDE 'pgplot.inc'
-      CHARACTER*16 DEFSTR
+      CHARACTER(LEN=16) DEFSTR
       LOGICAL PGNOTO
 C
       IF (.NOT.PGNOTO('PGCLOS')) THEN

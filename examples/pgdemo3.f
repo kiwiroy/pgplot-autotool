@@ -438,7 +438,7 @@ C Demonstration of contouring routine PGCONT and PGCONL.
 C-----------------------------------------------------------------------
       INTEGER I,J
       REAL F(40,40),FMIN,FMAX,ALEV(1),TR(6)
-      CHARACTER*32 LABEL
+      CHARACTER(LEN=32) LABEL
       DATA TR /0.0, 1.0, 0.0, 0.0, 0.0, 1.0/
 C
 C Compute a suitable function.

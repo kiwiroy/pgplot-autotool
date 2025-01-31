@@ -2,7 +2,7 @@ C*PGCURSE -- non-standard alias for PGCURS
 C+
       INTEGER FUNCTION PGCURSE (X, Y, CH)
       REAL X, Y
-      CHARACTER*1 CH
+      CHARACTER(LEN=1) CH
 C
 C See description of PGCURS.
 C--

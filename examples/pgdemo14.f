@@ -20,7 +20,7 @@ C-----------------------------------------------------------------------
       INTEGER PGOPEN, LSTR, I, JUNK, PGCURS, J, NV, BC, FC, CTOI
       INTEGER II, JJ
       CHARACTER CH
-      CHARACTER*30 LABEL(NBOX), VALUE(NBOX), RESULT(NBOX)
+      CHARACTER(LEN=30) LABEL(NBOX), VALUE(NBOX), RESULT(NBOX)
 C
       DATA BOX /0.44, 0.8, 0.79, 0.83,
      :          0.44, 0.8, 0.69, 0.73,
@@ -254,7 +254,7 @@ C                    to the next character after a valid integer, or
 C                    it is equal to LEN(S)+1.
 C-----------------------------------------------------------------------
       INTEGER K
-      CHARACTER*1 DIGITS(0:9)
+      CHARACTER(LEN=1) DIGITS(0:9)
       DATA  DIGITS/'0','1','2','3','4','5','6','7','8','9'/
 C
       CTOI = 0

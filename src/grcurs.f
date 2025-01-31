@@ -51,7 +51,7 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       REAL           RBUF(6)
       INTEGER        NBUF, LCHR, ICURS, ERRCNT
-      CHARACTER*16   CHR
+      CHARACTER(LEN=16)   CHR
       CHARACTER      C
       SAVE           ERRCNT
       DATA           ERRCNT/0/
@@ -93,8 +93,8 @@ C         -- position cursor?
           NBUF = 6
           LCHR = 0
           CALL GREXEC(GRGTYP,17,RBUF,NBUF,CHR,LCHR)
-          IX = RBUF(1)
-          IY = RBUF(2)
+          IX = INT(RBUF(1))
+          IY = INT(RBUF(2))
           CH = CHR(1:1)
           GRCURS = 1
 C         -- error if driver returns NUL

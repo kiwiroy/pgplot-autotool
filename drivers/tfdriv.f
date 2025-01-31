@@ -55,7 +55,7 @@ C-----------------------------------------------------------------------
       INTEGER UNIT, IER, I0, I1, J0, J1
       INTEGER I, LASTI, LASTJ
       INTEGER GRGMEM, GRFMEM
-      CHARACTER*10 MSG
+      CHARACTER(LEN=10) MSG
       INTEGER IC
       BYTE    TKBUF(12)
       INTEGER NW

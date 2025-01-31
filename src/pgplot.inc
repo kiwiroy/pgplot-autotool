@@ -112,14 +112,14 @@ C
       REAL    PGYBLC(PGMAXD), PGYTRC(PGMAXD)
 C-----------------------------------------------------------------------
 C The following parameters are used in the contouring routines to pass
-C information to the action routine. They do not need to be indexed.
+C information to the action routine. They do not need to be indexed. 
 C-----------------------------------------------------------------------
 C TRANS   Transformation matrix for contour plots; copied
 C         from argument list by PGCONT and used by PGCP.
 C
       INTEGER PGCINT, PGCMIN
       REAL    TRANS(6)
-      CHARACTER*32 PGCLAB
+      CHARACTER(LEN=64) :: PGCLAB
 C-----------------------------------------------------------------------
 C-----------------------------------------------------------------------
       COMMON  /PGPLT1/ PGID,PGDEVS,PGADVS,PGNX,  PGNY,  PGNXC, PGNYC ,

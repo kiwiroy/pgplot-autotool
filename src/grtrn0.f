@@ -23,7 +23,7 @@ C-----------------------------------------------------------------------
       REAL     XORG, YORG, XSCALE, YSCALE
       REAL           RBUF(6)
       INTEGER        NBUF,LCHR
-      CHARACTER*16   CHR
+      CHARACTER(LEN=16)   CHR
 C
       GRXORG(GRCIDE) = XORG
       GRXSCL(GRCIDE) = XSCALE

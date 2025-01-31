@@ -10,7 +10,7 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       INTEGER NBUF, LCHR
       REAL RBUF(6)
-      CHARACTER*8 CHR
+      CHARACTER(LEN=8) CHR
 C
 C Do nothing if device is not open or not in appropriate state.
 C

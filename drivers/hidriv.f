@@ -14,8 +14,8 @@ C-----------------------------------------------------------------------
       CHARACTER*(*) DEFNAM
       PARAMETER (DEVICE='HIDMP (Houston Instruments pen plotter)')
       PARAMETER (DEFNAM='pgplot.hiplot')
-      CHARACTER*80 MSG
-      CHARACTER*64 INSTR
+      CHARACTER(LEN=80) MSG
+      CHARACTER(LEN=64) INSTR
       INTEGER      IER, I0, J0, I1, J1, L, LASTI, LASTJ, UNIT
       INTEGER      GROPTX
 C-----------------------------------------------------------------------

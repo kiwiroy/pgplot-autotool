@@ -44,8 +44,8 @@ C 27-Nov-1991 - add \x escape [TJP].
 C 27-Jul-1995 - extend for 256-character set [TJP]
 C  7-Nov-1995 - add \. escape [TJP].
 C-----------------------------------------------------------------------
-      CHARACTER*8  FONTS
-      CHARACTER*48 GREEK
+      CHARACTER(LEN=8)  FONTS
+      CHARACTER(LEN=48) GREEK
       PARAMETER (FONTS = 'nrisNRIS')
       PARAMETER (GREEK = 'ABGDEZYHIKLMNCOPRSTUFXQW' //
      1                   'abgdezyhiklmncoprstufxqw' )

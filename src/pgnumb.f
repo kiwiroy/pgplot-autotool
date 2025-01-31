@@ -63,9 +63,9 @@ C 15-Dec-1988 [TJP] - More corrections of the same sort.
 C 27-Nov-1991 [TJP] - Change code for multiplication sign.
 C 23-Jun-1994 [TJP] - Partial implementation of FORM=1 and 2.
 C-----------------------------------------------------------------------
-      CHARACTER*1 BSLASH
-      CHARACTER*2 TIMES, UP, DOWN
-      CHARACTER*20 WORK, WEXP, TEMP
+      CHARACTER(LEN=1) BSLASH
+      CHARACTER(LEN=2) TIMES, UP, DOWN
+      CHARACTER(LEN=20) WORK, WEXP, TEMP
       INTEGER M, P, ND, I, J, K, NBP
       LOGICAL MINUS
 C

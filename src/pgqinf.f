@@ -57,8 +57,8 @@ C-----------------------------------------------------------------------
       INCLUDE 'pgplot.inc'
       INTEGER IER, L1, GRTRIM
       LOGICAL INTER, SAME
-      CHARACTER*8 TEST
-      CHARACTER*64 DEV1
+      CHARACTER(LEN=8) TEST
+      CHARACTER(LEN=64) DEV1
 C
 C Initialize PGPLOT if necessary.
 C

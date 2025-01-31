@@ -1095,7 +1095,7 @@ C!      INTEGER*1   ESC
       INTEGER   K1, J, K, BXMAX,BXMIN
       CHARACTER KSTR*3
       PARAMETER (ESC = 27)
-      CHARACTER*10 BUFF1
+      CHARACTER(LEN=10) BUFF1
 C!      integer*1 BUFF2(400)
       byte BUFF2(400)
         integer lbuf1,lbuf2,tbuf

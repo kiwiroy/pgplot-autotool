@@ -54,10 +54,10 @@ C
       PARAMETER (DEVTPL='QMS   (QUIC/QMS file, landscape orientation)')
       PARAMETER (DEVTPP='VQMS  (QUIC/QMS file, portrait orientation)')
 C
-      CHARACTER*130 BUFFER
-      CHARACTER*16  HEXSTR
-      CHARACTER*10  MSG
-      CHARACTER*40  TEMP
+      CHARACTER(LEN=130) BUFFER
+      CHARACTER(LEN=16)  HEXSTR
+      CHARACTER(LEN=10)  MSG
+      CHARACTER(LEN=40)  TEMP
       INTEGER       UNIT, IER, BUFLEN, MAXLEN, I0, J0, I1, J1, NPTS, IC,
      :              ISTYLE, LINWID, GROPTX
       REAL          QXSIZE, QYSIZE, QXSCAL, QYSCAL

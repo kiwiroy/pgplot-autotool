@@ -28,7 +28,7 @@ C-----------------------------------------------------------------------
       INTEGER     IC1, IC2
       INTEGER     I, J, L
       INTEGER     NBUF, LCHR
-      CHARACTER*1 CHR
+      CHARACTER(LEN=1) CHR
 
       IF (.NOT.GRPLTD(GRCIDE)) CALL GRBPIC
 C

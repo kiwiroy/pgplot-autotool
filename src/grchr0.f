@@ -32,7 +32,7 @@ C-----------------------------------------------------------------------
       PARAMETER (PI = 3.14159265359)
       INCLUDE 'grpckg1.inc'
       CHARACTER*(*) STRING
-      CHARACTER*1   NEXT
+      CHARACTER(LEN=1)   NEXT
       REAL     XMIN, XMAX, YMIN, YMAX
       INTEGER  MODE,LSTYLE,LEVEL
       INTEGER  I, J, L, CH, POINTS

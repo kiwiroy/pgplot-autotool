@@ -16,7 +16,7 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       INTEGER  I, J, NXP, NYP, NBUF, LCHR, II
       REAL     DX,DY,RBUF(32)
-      CHARACTER*32 CHR
+      CHARACTER(LEN=32) CHR
 C-----------------------------------------------------------------------
       NXP = I2 - I1 + 1
       NYP = J2 - J1 + 1

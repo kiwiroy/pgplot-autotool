@@ -16,7 +16,7 @@ C-----------------------------------------------------------------------
       REAL     DEN, AV, SFAC, SFACL
       REAL     XXAA,XXBB,YYAA,YYBB,XYAA,XYBB,YXAA,YXBB,XYAAIY,YXAAIY
       REAL     BUFFER(1026)
-      CHARACTER*1 CHR
+      CHARACTER(LEN=1) CHR
       INTRINSIC NINT, LOG
       PARAMETER (SFAC=65000.0)
 C-----------------------------------------------------------------------

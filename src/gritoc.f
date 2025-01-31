@@ -6,7 +6,7 @@ C+
 C
 C Convert integer INT into (decimal) character string in STR.
 C-----------------------------------------------------------------------
-      CHARACTER*10 DIGITS
+      CHARACTER(LEN=10) DIGITS
       INTEGER D, I, INTVAL, J, L
       CHARACTER K
       DATA DIGITS /'0123456789'/

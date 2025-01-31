@@ -30,7 +30,7 @@ C-----------------------------------------------------------------------
       REAL     RBUF(6)
       INTEGER NDEV,NBUF,LCHR
       INTEGER GRTRIM
-      CHARACTER*32 CHR
+      CHARACTER(LEN=32) CHR
 C
       GRDTYP = 0
       L = GRTRIM(TEXT)

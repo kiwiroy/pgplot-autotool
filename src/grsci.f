@@ -39,7 +39,7 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       INTEGER  IC, COLOR, IC1, IC2, NBUF,LCHR
       REAL     RBUF(6)
-      CHARACTER*1 CHR
+      CHARACTER(LEN=1) CHR
 C
 C Error if no workstation is open.
 C

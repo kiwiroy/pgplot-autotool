@@ -34,7 +34,7 @@ C  4-Feb-1997 - bug fix; character size was not correctly indexed by
 C               device ID.
 C-----------------------------------------------------------------------
       INCLUDE      'pgplot.inc'
-      CHARACTER*16 STR
+      CHARACTER(LEN=16) STR
       LOGICAL      INTER, PGNOTO
       REAL DUM1, DUM2, XS, YS, XVP1, XVP2, YVP1, YVP2
 C

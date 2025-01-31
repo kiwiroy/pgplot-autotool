@@ -15,8 +15,8 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       INTEGER I,NDEV,NBUF,LCHR
       REAL    RBUF(6)
-      CHARACTER*72 CHR
-      CHARACTER*72 TEXT
+      CHARACTER(LEN=72) CHR
+      CHARACTER(LEN=72) TEXT
 C---
       CALL GRMSG('Device types available:')
 C--- First obtain number of devices.

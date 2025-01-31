@@ -25,7 +25,7 @@ C
 C (9-Mar-1983)
 C-----------------------------------------------------------------------
       INTEGER  SYMBOL
-      CHARACTER*1 MARK
+      CHARACTER(LEN=1) MARK
       INTEGER  I, IDENT, POINTS
       LOGICAL  ABSXY, CENTER
       REAL     X(*), Y(*)

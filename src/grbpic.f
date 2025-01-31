@@ -9,7 +9,7 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       REAL RBUF(2)
       INTEGER NBUF, LCHR
-      CHARACTER*20 CHR
+      CHARACTER(LEN=20) CHR
 C
       GRPLTD(GRCIDE) = .TRUE.
       IF (GRGTYP.GT.0) THEN

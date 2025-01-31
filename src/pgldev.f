@@ -15,10 +15,10 @@ C 13-Dec-1990 - changed warnings to messages [TJP].
 C 26-Feb-1997 - revised description [TJP].
 C 18-Mar-1997 - revised [TJP].
 C-----------------------------------------------------------------------
-      CHARACTER*16 GVER
+      CHARACTER(LEN=16) GVER
       INTEGER L
-      CHARACTER*10 T
-      CHARACTER*64 D
+      CHARACTER(LEN=10) T
+      CHARACTER(LEN=64) D
       INTEGER I, N, TLEN, DLEN, INTER
 C
 C Initialize PGPLOT if necessary.

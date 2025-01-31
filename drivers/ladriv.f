@@ -49,7 +49,7 @@ C-----------------------------------------------------------------------
 C
       INTEGER UNIT, IER, IC, BX, BY, NPICT
       INTEGER GRGMEM, GRFMEM
-      CHARACTER*10 MSG
+      CHARACTER(LEN=10) MSG
 C define pointers for dynamically allocated arrays (used with same names)
       INTEGER BITMAP,buf
 C-----------------------------------------------------------------------

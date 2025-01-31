@@ -11,7 +11,7 @@ C--
 C 18-Aug-1994
 C-----------------------------------------------------------------------
       INTEGER IER, L, GRGCOM
-      CHARACTER*16 JUNK
+      CHARACTER(LEN=16) JUNK
 C
       IER = GRGCOM(JUNK, 'Type <RETURN> for next page: ', L)
       END

@@ -92,7 +92,7 @@ C
      6                GRMNCI, GRMXCI
 C
       CHARACTER*(GRFNMX) GRFILE(GRIMAX)
-      CHARACTER*11       GRGCAP(GRIMAX)
+      CHARACTER(LEN=11)  GRGCAP(GRIMAX)
       COMMON /GRCM01/ GRFILE, GRGCAP
       SAVE /GRCM00/, /GRCM01/
 C-----------------------------------------------------------------------

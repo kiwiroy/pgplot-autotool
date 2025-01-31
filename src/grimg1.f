@@ -12,7 +12,7 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       INTEGER NBUF, LCHR
       REAL    RBUF(21), FAC, AV, SFAC, SFACL
-      CHARACTER*1 CHR
+      CHARACTER(LEN=1) CHR
       INTEGER  I, J, II, NXP, NYP, IV
       INTRINSIC NINT, LOG
       PARAMETER (SFAC=65000.0)

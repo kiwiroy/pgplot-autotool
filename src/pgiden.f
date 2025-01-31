@@ -12,7 +12,7 @@ C 10-Sep-1990 : adjust position of text [TJP]
 C-----------------------------------------------------------------------
       INCLUDE 'pgplot.inc'
       INTEGER L, M, CF, CI, LW
-      CHARACTER*64 TEXT
+      CHARACTER(LEN=64) TEXT
       REAL D, CH
 C
       CALL PGBBUF

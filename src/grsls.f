@@ -28,7 +28,7 @@ C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
       INTEGER I, L, IDASH, NBUF,LCHR
       REAL    RBUF(6),TMP
-      CHARACTER*10 CHR
+      CHARACTER(LEN=10) CHR
       REAL PATERN(8,5)
 C
       DATA PATERN/ 8*10.0,

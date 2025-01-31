@@ -35,7 +35,7 @@ C-----------------------------------------------------------------------
       INTEGER       LUN, IER, IC
       INTEGER       X1,Y1,X2,Y2,XOLD,YOLD
       INTEGER       GROPTX
-      CHARACTER*10    MSG
+      CHARACTER(LEN=10)    MSG
       CHARACTER*(*)   DEVTYP,DEFNAM
       PARAMETER       (DEVTYP = 'CW6320 (Colorwriter 6320 plotter)')
       PARAMETER       (DEFNAM = 'pgplot.cwpl')

@@ -22,7 +22,7 @@ C--
 C 19-Jan-1988
 C-----------------------------------------------------------------------
       INTEGER I, LIN
-      CHARACTER*32 TEST
+      CHARACTER(LEN=32) TEST
 C
       TEST = 'PGPLOT_'//NAME
       LIN = INDEX(TEST, ' ')-1

@@ -66,7 +66,7 @@ C with NeXTstep. Addison-Wesley, Reading, Massachusetts, 1992.
 C-----------------------------------------------------------------------
       CHARACTER*(*) DTYPE
       PARAMETER (DTYPE= 'NEXT  (Display on NeXT console)')
-      CHARACTER*120 INSTR, MSG
+      CHARACTER(LEN=120) INSTR, MSG
       CHARACTER CBUF*4
       REAL      RTMP(4)
       INTEGER   HEIGHT, RESOL, WIDTH
@@ -84,7 +84,7 @@ C-----------------------------------------------------------------------
 C
       REAL          SHADE(0:15), RINIT(0:15), GINIT(0:15), BINIT(0:15)
       SAVE          SHADE,       RINIT,       GINIT,       BINIT
-      CHARACTER*1   HEXDIG(0:15)
+      CHARACTER(LEN=1)   HEXDIG(0:15)
       DATA HEXDIG/'0','1','2','3','4','5','6','7',
      1            '8','9','A','B','C','D','E','F'/
       DATA SHADE /1.00, 13*0.00, 0.33, 0.67/

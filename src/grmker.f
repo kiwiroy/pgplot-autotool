@@ -46,7 +46,7 @@ C-----------------------------------------------------------------------
       REAL     XMINX, XMAXX, YMINX, YMAXX
       REAL     RBUF(4)
       INTEGER  NBUF,LCHR
-      CHARACTER*32 CHR
+      CHARACTER(LEN=32) CHR
 C
 C Check that there is something to be plotted.
 C

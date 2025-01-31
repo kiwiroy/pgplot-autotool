@@ -25,9 +25,9 @@ C 17-Jun-1991 - ignore comments after ' (' [TJP].
 C 19-Dec-1994 - rewritten to scan backwards [TJP].
 C  6-Jun-1995 - correct a zero-length string problem [TJP].
 C-----------------------------------------------------------------------
-      CHARACTER*32  CTYPE, UPPER
-      CHARACTER*6   APPSTR
-      CHARACTER*256 DESCR
+      CHARACTER(LEN=32)  CTYPE, UPPER
+      CHARACTER(LEN=6)   APPSTR
+      CHARACTER(LEN=256) DESCR
       INTEGER       GRDTYP, GRTRIM
       INTEGER       L, LC, LS
       DATA          APPSTR/'APPEND'/

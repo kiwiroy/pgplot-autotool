@@ -31,7 +31,7 @@ C Test subroutine for PGPLOT: screen alignment and color palette.
 C-----------------------------------------------------------------------
       INTEGER I, L1, L2
       REAL X1, X2, Y1, Y2
-      CHARACTER*80 GTYPE, GVER
+      CHARACTER(LEN=80) GTYPE, GVER
 C
 C Get PGPLOT information.
 C
@@ -84,7 +84,7 @@ C Demonstration program for the PGPLOT plotting package.
 C Plot a table of the standard PGPLOT graph marker symbols. This
 C program also illustrates how windows and viewports may be manipulated.
 C-----------------------------------------------------------------------
-      CHARACTER*2 LABEL
+      CHARACTER(LEN=2) LABEL
       INTEGER NX, NY, N, IX, JY, LW
       REAL X, X1, X2, XOFF, Y, Y1, Y2, YOFF, DX, DY
       REAL XPIX1, XPIX2, YPIX1, YPIX2, RES
@@ -182,7 +182,7 @@ C-----------------------------------------------------------------------
       PARAMETER (N=9)
       INTEGER I
       REAL X1, Y1
-      CHARACTER*80 SAMPLE(N)
+      CHARACTER(LEN=80) SAMPLE(N)
       DATA SAMPLE/
      1 'Normal:  \\fnABCDQ efgh 1234 \\ga\\gb\\gg\\gd \\gL\\gH\\gD\\gW',
      2 'Roman:  \\frABCDQ efgh 1234 \\ga\\gb\\gg\\gd \\gL\\gH\\gD\\gW',
@@ -360,8 +360,8 @@ C-----------------------------------------------------------------------
 
       SUBROUTINE PGEX26
 C-----------------------------------------------------------------------
-      CHARACTER*128 DEVICE
-      CHARACTER*80 GTYPE, GVER
+      CHARACTER(LEN=128) DEVICE
+      CHARACTER(LEN=80) GTYPE, GVER
       INTEGER I, J, L, L1, L2
       REAL X, X1, X2, Y, Y1, Y2, R, XI, XP, YP
       REAL PX(43), PY(43)

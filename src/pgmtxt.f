@@ -50,7 +50,7 @@ C-----------------------------------------------------------------------
       LOGICAL PGNOTO
       REAL ANGLE, D, X, Y, RATIO, XBOX(4), YBOX(4)
       INTEGER CI, I, L, GRTRIM
-      CHARACTER*20 TEST
+      CHARACTER(LEN=20) TEST
 C
       IF (PGNOTO('PGMTXT')) RETURN
 C

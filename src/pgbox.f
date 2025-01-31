@@ -87,8 +87,8 @@ C               when ticks are inverted [TJP].
 C 26-Feb-1997 - use new routine pgclp [TJP].
 C-----------------------------------------------------------------------
       INCLUDE  'pgplot.inc'
-      CHARACTER*20  CLBL
-      CHARACTER*64  OPT
+      CHARACTER(LEN=20)  CLBL
+      CHARACTER(LEN=64)  OPT
       LOGICAL  XOPTA, XOPTB, XOPTC, XOPTG, XOPTN, XOPTM, XOPTT, XOPTS
       LOGICAL  YOPTA, YOPTB, YOPTC, YOPTG, YOPTN, YOPTM, YOPTT, YOPTS
       LOGICAL  XOPTI, YOPTI, YOPTV, XOPTL, YOPTL, XOPTP, YOPTP, RANGE

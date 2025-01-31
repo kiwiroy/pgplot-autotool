@@ -743,7 +743,7 @@ C-----------------------------------------------------------------------
 C
       REAL SS(MAXTIK), TFRAC(MAXTIK)
       INTEGER DD(MAXTIK), HH(MAXTIK), MM(MAXTIK)
-      CHARACTER*1 ASIGN(MAXTIK), ASIGNL
+      CHARACTER(LEN=1) ASIGN(MAXTIK), ASIGNL
 C
       REAL TIME, XLEN, YLEN, COORD, FJUST, RVAL, SSL, DISP,
      *XLEN2, YLEN2
@@ -1058,7 +1058,7 @@ C
       REAL S, TSEC
       INTEGER  D, H, M
       LOGICAL DODAY
-      CHARACTER*1 ASIGN
+      CHARACTER(LEN=1) ASIGN
 C
 C  Convert time in seconds to (DD) HH MM SS.S
 C

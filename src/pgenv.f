@@ -54,7 +54,7 @@ C 29-Aug-1989 [TJP] - remove common block; no longer needed.
 C-----------------------------------------------------------------------
       INTEGER      L
       LOGICAL      PGNOTO
-      CHARACTER*10 XOPTS, YOPTS, ENVOPT, TEMP
+      CHARACTER(LEN=10) XOPTS, YOPTS, ENVOPT, TEMP
 C
       IF (PGNOTO('PGENV')) RETURN
 C

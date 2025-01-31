@@ -9,7 +9,7 @@ C-----------------------------------------------------------------------
       INTEGER I, L, C1, C2, NC
       REAL F(MXI,MXJ)
       REAL FMIN,FMAX,TR(6), CONTRA, BRIGHT, ANGLE, C, S, ALEV(1)
-      CHARACTER*16 VAL
+      CHARACTER(LEN=16) VAL
 C
 C Introduction.
 C

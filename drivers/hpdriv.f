@@ -12,10 +12,10 @@ C-----------------------------------------------------------------------
       CHARACTER*(*) DEVICE, DEFNAM
       PARAMETER (DEVICE='HP7221 (Hewlett-Packard HP7221 pen plotter')
       PARAMETER (DEFNAM='pgplot.hpplot')
-      CHARACTER*10 MSG
-      CHARACTER*11 GRHPLI
-      CHARACTER*5  GRHPCP
-      CHARACTER*1  HPCOL(7)
+      CHARACTER(LEN=10) MSG
+      CHARACTER(LEN=11) GRHPLI
+      CHARACTER(LEN=5)  GRHPCP
+      CHARACTER(LEN=1)  HPCOL(7)
       INTEGER      IER, I0, J0, I1, J1, LASTI, LASTJ, UNIT, N1, N2, IC
       INTEGER      GRHPNC
       INTEGER      GROPTX
@@ -248,7 +248,7 @@ C (18-July-1983, R. S. Simon)
 C-----------------------------------------------------------------------
       INTEGER GRHPNX, GRHPNY, GRHPNC, N, NX1, NX2, NX3, NXR
       INTEGER NY2, NY3, NY4, NY5, NYR, NP1, NP2, NP3, NP4, NP5
-      CHARACTER*5 GRHPCP
+      CHARACTER(LEN=5) GRHPCP
 C
       GRHPNC = 0
       NP1 = 0

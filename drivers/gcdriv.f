@@ -43,7 +43,7 @@ C-----------------------------------------------------------------------
 C
       INTEGER UNIT, IER, IC, BX, BY, NPICT
       INTEGER GRGMEM, GRFMEM
-      CHARACTER*10 MSG
+      CHARACTER(LEN=10) MSG
       INTEGER BITMAP
 C-----------------------------------------------------------------------
 C

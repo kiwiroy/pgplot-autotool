@@ -42,8 +42,8 @@ C-----------------------------------------------------------------------
       PARAMETER (PTYPE=
      :  'VHPGL (Hewlett Packard HPGL plotter, portrait orientation)')
       PARAMETER (DEFNAM='pgplot.hpgl')
-      CHARACTER*80 MSG
-      CHARACTER*80 INSTR
+      CHARACTER(LEN=80) MSG
+      CHARACTER(LEN=80) INSTR
       INTEGER LASTI, LASTJ, UNIT, IC, IER
       INTEGER I0, J0, I1, J1, L
       INTEGER I, PLOTNO

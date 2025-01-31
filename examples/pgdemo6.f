@@ -4,7 +4,7 @@ C Test program for PGPLOT: test of Cursor
 C-----------------------------------------------------------------------
       INTEGER PGBEG, PGBAND
       INTEGER JUNK, MODE
-      CHARACTER*1 CH
+      CHARACTER(LEN=1) CH
       REAL X,Y
 C
       WRITE(*,*) '   This program demonstrates the use of routine',
