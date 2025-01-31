@@ -996,6 +996,9 @@ static int write_wrapper(Sysattr *sys, Function *fn)
   };
   write_symbol(wfile, sys, fn->name+1);
   fprintf(wfile, "();\n");
+  fprintf(wfile, "#if defined(__clang__)\n");
+  fprintf(wfile, "  __attribute__((optnone))\n");
+  fprintf(wfile, "#endif");
 /*
  * Write the function declaration.
  */
