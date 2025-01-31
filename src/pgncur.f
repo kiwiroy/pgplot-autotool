@@ -50,6 +50,7 @@ C
 C Check that PGPLOT is in the correct state.
 C
       IF (PGNOTO('PGNCUR')) RETURN
+      J = 0
 C
 C Save current color.
 C

@@ -26,9 +26,10 @@
  *--
  * 09-Nov-1994 - [mcs] Fortran callable C version for CRAY.
  *-----------------------------------------------------------------------
+ char *string; int *slen; int maxlen;
  */
-void GRDATE(string, slen, maxlen)
-     char *string; int *slen; int maxlen;
+
+void GRDATE(char *string, int *slen, int maxlen)
 {
   char vtime[18];  /* Output string compilation buffer */
   char *utime;     /* Returned string from ctime() */
