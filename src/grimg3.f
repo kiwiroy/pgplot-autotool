@@ -21,6 +21,7 @@ C-----------------------------------------------------------------------
 C-----------------------------------------------------------------------
 C
       IF (MODE.LT.0 .OR. MODE.GT.2) RETURN
+      VALUE = 0
 C
 C Initialize random-number generator (based on RAN2 of Press et al.,
 C Numerical Recipes)

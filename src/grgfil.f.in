@@ -40,6 +40,7 @@ C Is debug output requested?
 C
       CALL GRGENV('DEBUG', FF, L)
       DEBUG = L.GT.0
+      LD = 0
 C
 C Which file?
 C

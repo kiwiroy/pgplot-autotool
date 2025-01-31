@@ -37,7 +37,7 @@ C-----------------------------------------------------------------------
       PARAMETER (MAXBUF=27000)
 C
       INTEGER   INDEX(MAXCHR)
-      INTEGER*2 BUFFER(MAXBUF)
+      INTEGER   BUFFER(MAXBUF)
       INTEGER   I, LENGTH, LOC, NC, NC1, NC2, NCHAR, XYGRID(400)
 C-----------------------------------------------------------------------
  1000 FORMAT (7(2X,2I4))
@@ -70,11 +70,11 @@ C         -- store in index and buffer
           LOC = LOC+1
           IF (LOC.GT.MAXBUF) GOTO 500
           INDEX(NC) = LOC
-          BUFFER(LOC) = XYGRID(1)
+          BUFFER(LOC) = INT(XYGRID(1))
           DO 15 I=2,LENGTH,2
               LOC = LOC + 1
               IF (LOC.GT.MAXBUF) GOTO 500
-              BUFFER(LOC) = 128*(XYGRID(I)+64) + XYGRID(I+1) + 64
+              BUFFER(LOC) = INT(128*(XYGRID(I)+64) + XYGRID(I+1) + 64)
    15     CONTINUE
       GOTO 10
    20 CONTINUE

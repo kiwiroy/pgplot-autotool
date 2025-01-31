@@ -1820,11 +1820,11 @@ static int xw_get_geom(xw, pgw)
      XWServer *xw; PGwin *pgw;
 #endif
 {
-  int x,y;             /* The offset of the window on the screen (pixels) */
-  unsigned int width;  /* The width of the window (pixels) */
-  unsigned int height; /* The height of the window (pixels) */
-  int mask;            /* A bit mask to specify which values are known */
-  char *geometry;      /* The X-default geometry string */
+  int x = 0, y = 0;          /* The offset of the window on the screen (pixels) */
+  unsigned int width = 100;  /* The width of the window (pixels) */
+  unsigned int height = 100; /* The height of the window (pixels) */
+  int mask = 0;              /* A bit mask to specify which values are known */
+  char *geometry;            /* The X-default geometry string */
 /*
  * Get the optional pgxwin.geometry: resource string.
  */

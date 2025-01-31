@@ -56,12 +56,13 @@ C
       INTEGER CTABLE(3,0:255), CDEFLT(3,0:15)
       INTEGER IER, I, L, LL, IX0, IY0, IX1, IY1, USERH, USERW, JUNK
       INTEGER GRGMEM, GRFMEM, GROFIL, GRCFIL, GRCTOI
-      CHARACTER*80 MSG, INSTR, FILENM
+      CHARACTER(LEN=80) MSG, INSTR, FILENM
 C
 C Note: for 64-bit operating systems, the following will change
 C declaration to INTEGER*8:
 C
-      INTEGER*@SIZEOF_VOID_P@ PIXMAP
+      INTEGER(KIND=SELECTED_INT_KIND(@SIZEOF_VOID_P@)), DIMENSION(:,:),
+     1  POINTER :: PIXMAP
 C
       SAVE UNIT, IC, CTABLE, NPICT, MAXIDX, BX, BY, PIXMAP, FILENM
       SAVE CDEFLT, STATE
@@ -72,9 +73,68 @@ C
       DATA STATE /0/
 C-----------------------------------------------------------------------
 C
-      GOTO( 10, 20, 30, 40, 50, 60, 70, 80, 90,100,
-     1     110,120,130,140,150,160,170,180,190,200,
-     2     210,220,230,240,250,260,270,280,290), IFUNC
+      SELECT CASE (IFUNC)
+            CASE (1)
+                  GOTO 10
+            CASE (2)
+                  GOTO 20
+            CASE (3)
+                  GOTO 30
+            CASE (4)
+                  GOTO 40
+            CASE (5)
+                  GOTO 50
+            CASE (6)
+                  GOTO 60
+            CASE (7)
+                  GOTO 70
+            CASE (8)
+                  GOTO 80
+            CASE (9)
+                  GOTO 90
+            CASE (10)
+                  GOTO 100
+            CASE (11)
+                  GOTO 110
+            CASE (12)
+                  GOTO 120
+            CASE (13)
+                  GOTO 130
+            CASE (14)
+                  GOTO 140
+            CASE (15)
+                  GOTO 150
+            CASE (16)
+                  GOTO 160
+            CASE (17)
+                  GOTO 170
+            CASE (18)
+                  GOTO 180
+            CASE (19)
+                  GOTO 190
+            CASE (20)
+                  GOTO 200
+            CASE (21)
+                  GOTO 210
+            CASE (22)
+                  GOTO 220
+            CASE (23)
+                  GOTO 230
+            CASE (24)
+                  GOTO 240
+            CASE (25)
+                  GOTO 250
+            CASE (26)
+                  GOTO 260
+            CASE (27)
+                  GOTO 270
+            CASE (28)
+                  GOTO 280
+            CASE (29)
+                  GOTO 290
+            CASE DEFAULT
+                  PRINT *, "Error: Unrecognized IFUNC value ", IFUNC
+      END SELECT
   900 WRITE (MSG,'(I10)') IFUNC
       CALL GRWARN('Unimplemented function in WD device driver:'
      1    //MSG)
@@ -218,7 +278,7 @@ C
   110 CONTINUE
       BX = NINT(RBUF(1))+1
       BY = NINT(RBUF(2))+1
-      IER = GRGMEM(BX*BY, PIXMAP)
+      IER = GRGMEM(BX*BY*@SIZEOF_VOID_P@, PIXMAP)
       IF (IER.NE.1) THEN
          CALL GRGMSG(IER)
          CALL GRWARN('Failed to allocate plot buffer.')
@@ -227,8 +287,9 @@ C
          PIXMAP = 0
       END IF
 C     -- initialize to zero (background color)
-      IF (PIXMAP.NE.0) 
-     :     CALL GRWD03(1, 1, BX, BY, 0, BX, BY, %VAL(PIXMAP))
+      IF (ASSOCIATED(PIXMAP)) THEN 
+         CALL GRWD03(1, 1, BX, BY, 0, BX, BY, PIXMAP)
+      END IF
       IF (NPICT.GT.1) THEN
          CALL GRWD05 (FILENM, NPICT, MSG)
          UNIT = GROFIL(MSG)
@@ -245,8 +306,9 @@ C
       IX1=NINT(RBUF(3))+1
       IY0=BY-NINT(RBUF(2))
       IY1=BY-NINT(RBUF(4))
-      IF (PIXMAP.NE.0)
-     :     CALL GRWD01(IX0, IY0, IX1, IY1, IC, BX, BY, %VAL(PIXMAP))
+      IF (ASSOCIATED(PIXMAP)) THEN
+         CALL GRWD01(IX0, IY0, IX1, IY1, IC, BX, BY, PIXMAP)
+      END IF
       RETURN
 C
 C--- IFUNC=13, Draw dot ------------------------------------------------
@@ -254,19 +316,20 @@ C
   130 CONTINUE
       IX0=NINT(RBUF(1))+1
       IY0=BY-NINT(RBUF(2))
-      IF (PIXMAP.NE.0)
-     :     CALL GRWD01(IX0, IY0, IX0, IY0, IC, BX, BY, %VAL(PIXMAP))
+      IF (ASSOCIATED(PIXMAP)) THEN
+         CALL GRWD01(IX0, IY0, IX0, IY0, IC, BX, BY, PIXMAP)
+      END IF
       RETURN
 C
 C--- IFUNC=14, End picture ---------------------------------------------
 C
   140 CONTINUE
       IF (UNIT.GE.0) THEN
-         CALL GRWD06(UNIT, BX, BY, CTABLE, %VAL(PIXMAP), MAXIDX)
+         CALL GRWD06(UNIT, BX, BY, CTABLE, PIXMAP, MAXIDX)
          JUNK = GRCFIL(UNIT)
       END IF
       NPICT = NPICT+1
-      IER = GRFMEM(BX*BY, PIXMAP)
+      IER = GRFMEM(BX*BY*@SIZEOF_VOID_P@, PIXMAP)
       IF (IER.NE.1) THEN
          CALL GRGMSG(IER)
          CALL GRWARN('Failed to deallocate plot buffer.')
@@ -276,7 +339,7 @@ C
 C--- IFUNC=15, Select color index --------------------------------------
 C
   150 CONTINUE
-      IC = RBUF(1)
+      IC = INT(RBUF(1))
       MAXIDX = MAX(MAXIDX, IC)
       RETURN
 C
@@ -313,7 +376,7 @@ C
 C--- IFUNC=21, Set color representation. -------------------------------
 C
   210 CONTINUE
-      I = RBUF(1)
+      I = INT(RBUF(1))
       CTABLE(1, I) = NINT(RBUF(2)*255)
       CTABLE(2, I) = NINT(RBUF(3)*255)
       CTABLE(3, I) = NINT(RBUF(4)*255)
@@ -338,8 +401,9 @@ C
       IX1=NINT(RBUF(3))+1
       IY1=BY-NINT(RBUF(2))
       IY0=BY-NINT(RBUF(4))
-      IF (PIXMAP.NE.0) 
-     :     CALL GRWD03(IX0, IY0, IX1, IY1, IC, BX, BY, %VAL(PIXMAP))
+      IF (ASSOCIATED(PIXMAP)) THEN 
+         CALL GRWD03(IX0, IY0, IX1, IY1, IC, BX, BY, PIXMAP)
+      END IF
       RETURN
 C
 C--- IFUNC=25, Not implemented -----------------------------------------
@@ -350,7 +414,7 @@ C
 C--- IFUNC=26, Line of pixels ------------------------------------------
 C
   260 CONTINUE
-      CALL GRWD04(NBUF, RBUF, BX, BY, %VAL(PIXMAP), MAXIDX)
+      CALL GRWD04(NBUF, RBUF, BX, BY, PIXMAP, MAXIDX)
       RETURN
 C
 C--- IFUNC=27, Not implemented -----------------------------------------
@@ -366,7 +430,7 @@ C
 C--- IFUNC=29, Query color representation. -----------------------------
 C
   290 CONTINUE
-      I = RBUF(1)
+      I = INT(RBUF(1))
       RBUF(2) = CTABLE(1,I)/255.0
       RBUF(3) = CTABLE(2,I)/255.0
       RBUF(4) = CTABLE(3,I)/255.0
@@ -380,7 +444,7 @@ C-----------------------------------------------------------------------
       SUBROUTINE GRWD01 (IX0, IY0, IX1, IY1, ICOL, BX, BY, PIXMAP)
       INTEGER IX0, IY0, IX1, IY1
       INTEGER ICOL, BX, BY
-      BYTE PIXMAP(BX,BY)
+      INTEGER, INTENT(INOUT) :: PIXMAP(BX, BY)
 *
 * Draw a straight-line segment from absolute pixel coordinates
 * (IX0, IY0) to (IX1, IY1).
@@ -391,53 +455,55 @@ C-----------------------------------------------------------------------
 *-----------------------------------------------------------------------
       INTEGER IX, IY, IS
       REAL    D
-      BYTE    VAL
+      INTEGER(KIND=1) VAL, PIXBUF(BX, BY)
 C
       IF (ICOL .GT. 127) THEN
-         VAL = ICOL - 256
+         VAL = INT(ICOL - 256, KIND=1)
       ELSE
-         VAL = ICOL
+         VAL = INT(ICOL, KIND=1)
       END IF
 C
       IF (IX0.EQ.IX1 .AND. IY0.EQ.IY1) THEN
-         PIXMAP(IX0,IY0)=VAL
+         PIXBUF(IX0,IY0)=VAL
       ELSE IF (ABS(IY1-IY0).GT.ABS(IX1-IX0)) THEN
          D=(IX1-IX0)/REAL(IY1-IY0)
          IS=1
          IF (IY1.LT.IY0) IS=-1
-         DO 10 IY=IY0,IY1,IS
+         DO IY=IY0,IY1,IS
             IX=NINT(IX0+(IY-IY0)*D)
-            PIXMAP(IX,IY)=VAL
- 10      CONTINUE
+            PIXBUF(IX,IY)=VAL
+         END DO
       ELSE
          D=(IY1-IY0)/REAL(IX1-IX0)
          IS=1
          IF (IX1.LT.IX0) IS=-1
-         DO 20 IX=IX0,IX1,IS
+         DO IX=IX0,IX1,IS
             IY=NINT(IY0+(IX-IX0)*D)
-            PIXMAP(IX,IY)=VAL
- 20      CONTINUE
+            PIXBUF(IX,IY)=VAL
+         END DO
       END IF
+      PIXMAP = RESHAPE(
+     :  TRANSFER(PIXBUF, INT(0, KIND=1), BX * BY), [BX, BY])
       END
 
 **GRWD02 -- Store unsigned 16-bit integer in host independent format
 *+
       SUBROUTINE GRWD02(I, ARR)
-      BYTE ARR(2)
+      INTEGER(KIND=1) ARR(2)
       INTEGER I, TMP
 *
       TMP = MOD(I/256,256)
       IF (TMP .GT. 127) THEN
-         ARR(1) = TMP - 256
+         ARR(1) = INT(TMP - 256, KIND=1)
       ELSE
-         ARR(1) = TMP
+         ARR(1) = INT(TMP, KIND=1)
       END IF
 
       TMP = MOD(I,256)
       IF (TMP .GT. 127) THEN
-         ARR(2) = TMP - 256
+         ARR(2) = INT(TMP - 256, KIND=1)
       ELSE
-         ARR(2) = TMP
+         ARR(2) = INT(TMP, KIND=1)
       END IF
       END
 
@@ -446,7 +512,7 @@ C
       SUBROUTINE GRWD03 (IX0, IY0, IX1, IY1, ICOL, BX, BY, PIXMAP)
       INTEGER IX0, IY0, IX1, IY1
       INTEGER ICOL, BX, BY
-      BYTE PIXMAP(BX,BY)
+      INTEGER, INTENT(INOUT) :: PIXMAP(BX, BY)
 *
 * Arguments:
 *  IX0, IY0        (input): Lower left corner.
@@ -456,38 +522,43 @@ C
 *  PIXMAP   (input/output): The image data buffer.
 *-----------------------------------------------------------------------
       INTEGER IX, IY
-      BYTE VAL
+      INTEGER(KIND=1) VAL, PIXBUF(BX, BY)
 *
       IF (ICOL .GT. 127) THEN
-         VAL = ICOL - 256
+         VAL = INT(ICOL - 256, KIND=1)
       ELSE
-         VAL = ICOL
+         VAL = INT(ICOL, KIND=1)
       END IF
-      DO 20 IY=IY0,IY1
-         DO 10 IX=IX0,IX1
-            PIXMAP(IX,IY) = VAL
- 10      CONTINUE
- 20   CONTINUE
+      DO IY=IY0,IY1
+         DO IX=IX0,IX1
+            PIXBUF(IX,IY) = VAL
+         END DO
+      END DO
+      PIXMAP = RESHAPE(
+     :  TRANSFER(PIXBUF, INT(0, KIND=1), BX * BY), [BX, BY])
       END
 
 **GRWD04 -- PGPLOT WD driver, fill image line
 *+
       SUBROUTINE GRWD04(NBUF,RBUF,BX,BY,PIXMAP,MAXIDX)
-      INTEGER I,J,NBUF,BX,BY,N,IC,MAXIDX
+      INTEGER I,J,NBUF,BX,BY,N,MAXIDX,IC
       REAL RBUF(NBUF)
-      BYTE PIXMAP(BX,BY)
+      INTEGER, INTENT(INOUT) :: PIXMAP(BX, BY)
+      INTEGER(KIND=1) PIXBUF(BX,BY)
 *-
       I = NINT(RBUF(1))+1
       J = BY-NINT(RBUF(2))
-      DO 10 N=3,NBUF
-         IC=RBUF(N)
+      DO N=3,NBUF
+         IC=INT(RBUF(N))
          IF (IC .GT. 127) THEN
-            PIXMAP(I+N-3,J)=IC - 256
+            PIXBUF(I+N-3,J)=INT(IC - 256, KIND=1)
          ELSE
-            PIXMAP(I+N-3,J)=IC
+            PIXBUF(I+N-3,J)=INT(IC, KIND=1)
          END IF
          MAXIDX=MAX(MAXIDX,IC)
- 10   CONTINUE
+      END DO
+      PIXMAP = RESHAPE(
+     :  TRANSFER(PIXBUF, INT(0, KIND=1), BX * BY), [BX, BY])
       END
 
 **GRWD05 -- Replace # in filename by picture number
@@ -495,7 +566,7 @@ C
       SUBROUTINE GRWD05 (NAME1, NP, NAME2)
       CHARACTER*(*) NAME1
       CHARACTER*(*) NAME2
-      CHARACTER*80  TMP
+      CHARACTER(LEN=80) TMP
       INTEGER GRTRIM
       INTEGER NP, IDX, L, LN
 
@@ -527,7 +598,7 @@ C        -- last resort: invent a new name
       SUBROUTINE GRWD06 (UNIT, BX, BY, CTABLE, PIXMAP, MAXIDX)
       INTEGER UNIT, BX, BY, MAXIDX
       INTEGER CTABLE(3,0:255)
-      BYTE PIXMAP(BX * BY)
+      INTEGER PIXMAP(BX * BY)
 *
 * Write XWD image to UNIT.
 *
@@ -540,7 +611,7 @@ C        -- last resort: invent a new name
 *--
 * 23-Jan-1995 - New routine [SCA]
 *-----------------------------------------------------------------------
-      BYTE    COLOR(12), HEAD(107)
+      INTEGER(KIND=1) COLOR(12), HEAD(107)
       INTEGER I, J, IER
       INTEGER GRWFIL
       DATA COLOR /0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0/
@@ -585,9 +656,9 @@ C        -- last resort: invent a new name
          CALL GRWD02 (J, COLOR(3))
          DO I = 1, 3
             IF (CTABLE(I,J) .GT. 127) THEN
-               COLOR(3 + I * 2) = CTABLE(I,J) - 256
+               COLOR(3 + I * 2) = INT(CTABLE(I,J) - 256, KIND=1)
             ELSE
-               COLOR(3 + I * 2) = CTABLE(I,J)
+               COLOR(3 + I * 2) = INT(CTABLE(I,J), KIND=1)
             END IF
             COLOR(4 + I * 2) = COLOR(3 + I * 2)
          END DO
@@ -596,5 +667,5 @@ C        -- last resort: invent a new name
 *
 * Write out the bitmap.
 *
-      IER = GRWFIL (UNIT, BX * BY, PIXMAP)
+      IER = GRWFIL (UNIT, BX * BY, INT(PIXMAP, KIND=1))
       END

@@ -420,7 +420,7 @@ C
 C--- IFUNC=21, Set color representation. -------------------------------
 C
   210 CONTINUE
-      CI = RBUF(1)
+      CI = NINT(RBUF(1))
       MONO = NINT(30.*RBUF(2) + 59.*RBUF(3) + 11.*RBUF(4))
 C     -- convertRGB to hue, lightness, saturation
       CALL GRXHLS(RBUF(2),RBUF(3),RBUF(4),CH,CL,CS)

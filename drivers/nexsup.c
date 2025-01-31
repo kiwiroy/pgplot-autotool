@@ -37,7 +37,7 @@ void grgetreply(ifunc, ibuf, lbuf)
       };
       struct pgmess sbuf;
       int    msgsock, repsock;
-      int    i;
+/*      int    i; */
       socklen_t itmp;
 
 /* We need a socket that pgview can reply to.  Create descriptor. */

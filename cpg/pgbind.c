@@ -239,7 +239,7 @@ int main(int argc, char *argv[])
 {
   PGbind *pg=NULL;     /* pgbind state container */
   int waserr = 0;      /* True after any error */
-  FILE *ofile;         /* file handle for the old cpgplot.c wrapper file */
+ /* FILE *ofile;  */   /* file handle for the old cpgplot.c wrapper file */
 
 
 /*

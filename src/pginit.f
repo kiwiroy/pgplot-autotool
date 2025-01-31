@@ -14,9 +14,9 @@ C-----------------------------------------------------------------------
 C
       IF (CALLED.EQ.0) THEN
          PGID = 0
-         DO 10 I=1,PGMAXD
+         DO I=1,PGMAXD
             PGDEVS(I) = 0
- 10      CONTINUE
+         END DO
          CALL GRINIT
          CALLED = 1
       END IF

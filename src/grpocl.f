@@ -35,7 +35,11 @@ C-----------------------------------------------------------------------
       INTEGER I
       REAL FX, FY, SX, SY
 C
+      FX   = 0
+      FY   = 0
       NOUT = 0
+      SX   = 0
+      SY   = 0
       DO 100 I=1,N
          IF (I.EQ.1) THEN
 C           -- save first point

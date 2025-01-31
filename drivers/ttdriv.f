@@ -174,7 +174,7 @@ C-----------------------------------------------------------------------
 C
       CHARACTER(LEN=48) DEVICE(NDEVS)
       SAVE         DEVICE
-      CHARACTER(LEN=80) TEXT
+      CHARACTER(LEN=88) TEXT
       CHARACTER(LEN=32) CTMP, CADD, CSCR(4)*4
       CHARACTER(LEN=500) CBUF
       SAVE          CBUF
@@ -318,6 +318,7 @@ C     -- check for concurrent access
       NBUF = 2
       ICHAN = GROTER(CHR, LCHR)
       IF (ICHAN .LT. 0) THEN
+C--------------- 40 characters
           TEXT = 'Cannot open output device for plot type '//
      :           DEVICE(MODE)
           CALL GRWARN(TEXT)
@@ -535,7 +536,7 @@ C
 C--- IFUNC=15, Select color index. -------------------------------------
 C
   150 CONTINUE
-      ICI = RBUF(1)
+      ICI = INT(RBUF(1))
       IF (ICI.LT.0 .OR. ICI.GT.MAXCI(MODE)) THEN
           ICI = 1
           RBUF(1) = ICI
@@ -686,24 +687,24 @@ C
   210 CONTINUE
       IF (MODE.EQ.4) THEN
 C        -- gterm
-         I = RBUF(1)
+         I = INT(RBUF(1))
          CTMP(1:6) = CHAR(GS)//CHAR(ESC)//'TG14'
          LTMP = 6
          CALL GRTT05(I,     CADD, LADD)
          CTMP(LTMP+1:LTMP+LADD) = CADD(:LADD)
          LTMP = LTMP + LADD
 C        -- red
-         INTEN = RBUF(2)*255.0
+         INTEN = NINT(RBUF(2)*255.0)
          CALL GRTT05(INTEN, CADD, LADD)
          CTMP(LTMP+1:LTMP+LADD) = CADD(:LADD)
          LTMP = LTMP + LADD
 C        -- green
-         INTEN = RBUF(3)*255.0
+         INTEN = NINT(RBUF(3)*255.0)
          CALL GRTT05(INTEN, CADD, LADD)
          CTMP(LTMP+1:LTMP+LADD) = CADD(:LADD)
          LTMP = LTMP + LADD
 C        -- blue
-         INTEN = RBUF(4)*255.0
+         INTEN = NINT(RBUF(4)*255.0)
          CALL GRTT05(INTEN, CADD, LADD)
          CTMP(LTMP+1:LTMP+LADD) = CADD(:LADD)
          LTMP = LTMP + LADD
@@ -715,24 +716,24 @@ C
          LASTI = -1
       ELSE IF (MODE.EQ.9) THEN
 C        -- TK4100
-         I = RBUF(1)
+         I = INT(RBUF(1))
          CTMP(1:5) = CHAR(ESC)//'TG14'
          LTMP = 5
          CALL GRTT05(I,     CADD, LADD)
          CTMP(LTMP+1:LTMP+LADD) = CADD(:LADD)
          LTMP = LTMP + LADD
 C        -- red
-         INTEN = RBUF(2)*100.0
+         INTEN = NINT(RBUF(2)*100.0)
          CALL GRTT05(INTEN, CADD, LADD)
          CTMP(LTMP+1:LTMP+LADD) = CADD(:LADD)
          LTMP = LTMP + LADD
 C        -- green
-         INTEN = RBUF(3)*100.0
+         INTEN = NINT(RBUF(3)*100.0)
          CALL GRTT05(INTEN, CADD, LADD)
          CTMP(LTMP+1:LTMP+LADD) = CADD(:LADD)
          LTMP = LTMP + LADD
 C        -- blue
-         INTEN = RBUF(4)*100.0
+         INTEN = NINT(RBUF(4)*100.0)
          CALL GRTT05(INTEN, CADD, LADD)
          CTMP(LTMP+1:LTMP+LADD) = CADD(:LADD)
          LTMP = LTMP + LADD
