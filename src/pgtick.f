@@ -5,7 +5,7 @@ C+
       SUBROUTINE PGTICK (X1, Y1, X2, Y2, V, TIKL, TIKR, DISP, 
      :                   ORIENT, STR)
       REAL X1, Y1, X2, Y2, V, TIKL, TIKR, DISP, ORIENT
-      CHARACTER*(*) STR
+      CHARACTER(LEN=*), INTENT(IN) :: STR
 C
 C Draw and label single tick mark on a graph axis. The tick mark is
 C a short line perpendicular to the direction of the axis (which is not
@@ -27,7 +27,7 @@ C                    in units of the character height.
 C  DISP   (input)  : displacement of label text to
 C                    right of axis, in units of the character height.
 C  ORIENT (input)  : orientation of label text, in degrees; angle between
-C                    baseline of text and direction of axis (0-360°).
+C                    baseline of text and direction of axis (0-360ï¿½).
 C  STR    (input)  : text of label (may be blank).
 C--
 C 25-Mar-1997 - new routine [TJP].
@@ -35,6 +35,8 @@ C-----------------------------------------------------------------------
       REAL X, Y, XV1, XV2, YV1, YV2, XW1, XW2, YW1, YW2
       REAL XPMM, YPMM, LENMM, ANGLE, XCH, YCH
       REAL TIKX, TIKY, FJUST, D, OR
+      CHARACTER(LEN=LEN(STR)) :: STR_COPY
+      STR_COPY = STR
 C
 C Check arguments.
 C
@@ -74,7 +76,7 @@ C
 C Label the tick mark.
 C
       D = DISP
-      IF (STR.EQ.' ') RETURN
+      IF (STR_COPY.EQ.' ') RETURN
       OR = MOD(ORIENT, 360.0)
       IF (OR.LT.0.0) OR=OR+360.0
       IF (OR.GT.45.0 .AND. OR.LE.135.0) THEN
@@ -90,6 +92,6 @@ C
       ELSE
          FJUST = 0.5
          IF (D.GT.0.0) D = D+1.0
-      END IF            
-      CALL PGPTXT(X-D*TIKX, Y-D*TIKY, ANGLE-OR, FJUST, STR)
+      END IF
+      CALL PGPTXT(X-D*TIKX, Y-D*TIKY, ANGLE-OR, FJUST, STR_COPY)
       END
