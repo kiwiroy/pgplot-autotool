@@ -11,5 +11,6 @@ C  LUN    : the logical unit number to free.
 C--
 C 25-Nov-1988
 C-----------------------------------------------------------------------
+      LUN = LUN + 0
       RETURN
       END

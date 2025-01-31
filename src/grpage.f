@@ -48,8 +48,8 @@ C devices)
 C
       IF (.NOT.GRADJU(GRCIDE)) THEN
           CALL GREXEC(GRGTYP, 6,RBUF,NBUF,CHR,LCHR)
-          GRXMXA(GRCIDE) = RBUF(2)
-          GRYMXA(GRCIDE) = RBUF(4)
+          GRXMXA(GRCIDE) = INT(RBUF(2))
+          GRYMXA(GRCIDE) = INT(RBUF(4))
       END IF
 C
       END

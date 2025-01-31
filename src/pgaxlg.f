@@ -82,7 +82,7 @@ C
          IF (DVMAJ.LT.1.0) DVMAJ = 1.0
       END IF
       DVMIN = 1.0
-      NSUBT = DVMAJ/DVMIN
+      NSUBT = INT(DVMAJ/DVMIN)
 C
       CALL PGBBUF
       CALL PGQCLP(CLIP)

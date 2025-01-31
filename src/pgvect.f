@@ -49,14 +49,9 @@ C  5-Oct-1996: correct error in computing max vector length [TJP;
 C              thanks to David Singleton].
 C-----------------------------------------------------------------------
       INTEGER  I, J
-      REAL X, Y, X1, Y1, X2, Y2
+      REAL X1, Y1, X2, Y2
       REAL CC
       INTRINSIC SQRT, MAX, MIN
-C
-C Define grid to world transformation
-C
-      X(I,J) = TR(1) + TR(2)*I + TR(3)*J
-      Y(I,J) = TR(4) + TR(5)*I + TR(6)*J
 C
 C Check arguments.
 C
@@ -93,18 +88,18 @@ C
 C Define the vector starting and end points according to NC.
 C
                IF (NC.LT.0) THEN
-                  X2 = X(I,J)
-                  Y2 = Y(I,J)
+                  X2 = X(I,J,TR)
+                  Y2 = Y(I,J,TR)
                   X1 = X2 - A(I,J)*CC
                   Y1 = Y2 - B(I,J)*CC
                ELSE IF (NC.EQ.0) THEN
-                  X2 = X(I,J) + 0.5*A(I,J)*CC
-                  Y2 = Y(I,J) + 0.5*B(I,J)*CC
+                  X2 = X(I,J,TR) + 0.5*A(I,J)*CC
+                  Y2 = Y(I,J,TR) + 0.5*B(I,J)*CC
                   X1 = X2 - A(I,J)*CC
                   Y1 = Y2 - B(I,J)*CC
                ELSE
-                  X1 = X(I,J)
-                  Y1 = Y(I,J)
+                  X1 = X(I,J,TR)
+                  Y1 = Y(I,J,TR)
                   X2 = X1 + A(I,J)*CC
                   Y2 = Y1 + B(I,J)*CC
                END IF
@@ -117,4 +112,20 @@ C
  40   CONTINUE
 C
       CALL PGEBUF
-      END
+
+      CONTAINS
+C
+C Define grid to world transformation
+C
+      REAL FUNCTION X(I, J, TR)
+        INTEGER, INTENT(IN) :: I, J
+        REAL, DIMENSION(6), INTENT(IN) :: TR
+        X = TR(1) + TR(2)*I + TR(3)*J
+      END FUNCTION X
+
+      REAL FUNCTION Y(I, J, TR)
+        INTEGER, INTENT(IN) :: I, J
+        REAL, DIMENSION(6), INTENT(IN) :: TR
+        Y = TR(4) + TR(5)*I + TR(6)*J
+      END FUNCTION Y
+      END SUBROUTINE PGVECT

@@ -82,9 +82,53 @@ C- this pattern.
      :     '$','2','#','!','0',')'/
       DATA CDASH/'0','1','3','"','4'/
 C---
-      GOTO( 10, 20, 30, 40, 50, 60, 70, 80, 90,100,
-     :     110,120,130,140,150,160,900,180,190,200,
-     :     210) IFUNC
+      SELECT CASE (IFUNC)
+        CASE (1)
+                GOTO 10
+        CASE (2)
+                GOTO 20
+        CASE (3)
+                GOTO 30
+        CASE (4)
+                GOTO 40
+        CASE (5)
+                GOTO 50
+        CASE (6)
+                GOTO 60
+        CASE (7)
+                GOTO 70
+        CASE (8)
+                GOTO 80
+        CASE (9)
+                GOTO 90
+        CASE (10)
+                GOTO 100
+        CASE (11)
+                GOTO 110
+        CASE (12)
+                GOTO 120
+        CASE (13)
+                GOTO 130
+        CASE (14)
+                GOTO 140
+        CASE (15)
+                GOTO 150
+        CASE (16)
+                GOTO 160
+        CASE (17)   ! Originally mapped to 900
+                GOTO 900
+        CASE (18)
+                GOTO 180
+        CASE (19)
+                GOTO 190
+        CASE (20)
+                GOTO 200
+        CASE (21)
+                GOTO 210
+        CASE DEFAULT
+                GOTO 900
+      END SELECT
+
  900  WRITE (MSG,'(I10)') IFUNC
       CALL GRWARN('Unimplemented function in CA device driver: '//MSG)
       NBUF = -1
@@ -216,7 +260,7 @@ C- properly use polylines then dash pattern may work better.
 C
 C--- IFUNC=20, Polygon fill. -------------------------------------------
 200     IF(NPTS.EQ.0) THEN
-            NPTS=RBUF(1)
+            NPTS=INT(RBUF(1))
             CBUF(1:5)='I'//CFILL(ICOL)//'0'//CHAR(IS2)//'2'
             LBUF=5
             LASX=0

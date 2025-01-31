@@ -31,14 +31,14 @@ C     write (*,*) 'GRSETS: old size', GRXMXA(IDENT), GRYMXA(IDENT)
       CALL GRPAGE
       IF ((XSIZE .LT. 0.0) .OR. (YSIZE .LT. 0.0)) THEN
           CALL GREXEC(GRGTYP, 6,RBUF,NBUF,CHR,LCHR)
-          GRXMXA(IDENT) = RBUF(2)
-          GRYMXA(IDENT) = RBUF(4)
+          GRXMXA(IDENT) = INT(RBUF(2))
+          GRYMXA(IDENT) = INT(RBUF(4))
       ELSE
           I = NINT(XSIZE)
           J = NINT(YSIZE)
           CALL GREXEC(GRGTYP, 2,RBUF,NBUF,CHR,LCHR)
-          IX=RBUF(2)
-          IY=RBUF(4)
+          IX=INT(RBUF(2))
+          IY=INT(RBUF(4))
           IF (IX.GT.0) I = MIN(I,IX)
           IF (IY.GT.0) J = MIN(J,IY)
           GRXMXA(IDENT) = I

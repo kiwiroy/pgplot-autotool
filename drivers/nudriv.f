@@ -93,9 +93,69 @@ C
 C
       IF (IFUNC.LT.1 .OR. IFUNC.GT.NOPCOD) GOTO 900
       COUNT(IFUNC) = COUNT(IFUNC) + 1
-      GOTO( 10, 20, 30, 40, 50, 60, 70, 80, 90,100,
-     1     110,120,130,140,150,160,170,180,190,200,
-     2     210,220,230,240,250,260,270,280,290), IFUNC
+      SELECT CASE (IFUNC)
+            CASE (1)
+                  GOTO 10
+            CASE (2)
+                  GOTO 20
+            CASE (3)
+                  GOTO 30
+            CASE (4)
+                  GOTO 40
+            CASE (5)
+                  GOTO 50
+            CASE (6)
+                  GOTO 60
+            CASE (7)
+                  GOTO 70
+            CASE (8)
+                  GOTO 80
+            CASE (9)
+                  GOTO 90
+            CASE (10)
+                  GOTO 100
+            CASE (11)
+                  GOTO 110
+            CASE (12)
+                  GOTO 120
+            CASE (13)
+                  GOTO 130
+            CASE (14)
+                  GOTO 140
+            CASE (15)
+                  GOTO 150
+            CASE (16)
+                  GOTO 160
+            CASE (17)
+                  GOTO 170
+            CASE (18)
+                  GOTO 180
+            CASE (19)
+                  GOTO 190
+            CASE (20)
+                  GOTO 200
+            CASE (21)
+                  GOTO 210
+            CASE (22)
+                  GOTO 220
+            CASE (23)
+                  GOTO 230
+            CASE (24)
+                  GOTO 240
+            CASE (25)
+                  GOTO 250
+            CASE (26)
+                  GOTO 260
+            CASE (27)
+                  GOTO 270
+            CASE (28)
+                  GOTO 280
+            CASE (29)
+                  GOTO 290
+            CASE DEFAULT
+                  GOTO 900
+      END SELECT
+
   900 WRITE (MSG, '(I10)') IFUNC
       CALL GRWARN('Unimplemented function in NULL device driver: '//MSG)
       NBUF = -1
@@ -159,7 +219,7 @@ C
 C--- IFUNC = 8, Select plot. -------------------------------------------
 C
    80 CONTINUE
-      I = RBUF(2) - 67890
+      I = INT(RBUF(2) - 67890)
       IF (I.LT.1 .OR. I.GT.MAXDEV) THEN
          CALL GRWARN('internal error: NULL opcode 8')
       ELSE IF (STATE(I).GT.0) THEN
@@ -305,7 +365,7 @@ C--- IFUNC=21, Set color representation. -------------------------------
 C
   210 CONTINUE
       IF (STATE(ACTIVE).LT.1) CALL GRNU00(IFUNC,STATE(ACTIVE))
-      I = RBUF(1)
+      I = INT(RBUF(1))
       CTABLE(1, I) = NINT(RBUF(2)*255)
       CTABLE(2, I) = NINT(RBUF(3)*255)
       CTABLE(3, I) = NINT(RBUF(4)*255)
@@ -357,7 +417,7 @@ C--- IFUNC=29, Query color representation. -----------------------------
 C
   290 CONTINUE
       IF (STATE(ACTIVE).LT.1) CALL GRNU00(IFUNC,STATE(ACTIVE))
-      I = RBUF(1)
+      I = INT(RBUF(1))
       RBUF(2) = CTABLE(1,I)/255.0
       RBUF(3) = CTABLE(2,I)/255.0
       RBUF(4) = CTABLE(3,I)/255.0

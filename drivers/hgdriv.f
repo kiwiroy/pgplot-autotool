@@ -66,11 +66,61 @@ C
       CHARACTER(LEN=132) OBUF
       SAVE UNIT, IC, LASTI, LASTJ, LOBUF, OBUF, PEON, NREL
       SAVE FF, EC
+      NPTS = 0
+      START = .FALSE.
 C-----------------------------------------------------------------------
 C
-      GOTO( 10, 20, 30, 40, 50, 60, 70, 80, 90,100,
-     1     110,120,130,140,150,160,170,180,190,200,
-     2     210,220,230), IFUNC
+      SELECT CASE (IFUNC)
+            CASE (1) 
+                  GOTO 10
+            CASE (2) 
+                  GOTO 20
+            CASE (3) 
+                  GOTO 30
+            CASE (4) 
+                  GOTO 40
+            CASE (5) 
+                  GOTO 50
+            CASE (6) 
+                  GOTO 60
+            CASE (7) 
+                  GOTO 70
+            CASE (8) 
+                  GOTO 80
+            CASE (9) 
+                  GOTO 90
+            CASE (10) 
+                  GOTO 100
+            CASE (11) 
+                  GOTO 110
+            CASE (12) 
+                  GOTO 120
+            CASE (13) 
+                  GOTO 130
+            CASE (14) 
+                  GOTO 140
+            CASE (15) 
+                  GOTO 150
+            CASE (16) 
+                  GOTO 160
+            CASE (17) 
+                  GOTO 170
+            CASE (18) 
+                  GOTO 180
+            CASE (19) 
+                  GOTO 190
+            CASE (20) 
+                  GOTO 200
+            CASE (21) 
+                  GOTO 210
+            CASE (22) 
+                  GOTO 220
+            CASE (23) 
+                  GOTO 230
+            CASE DEFAULT
+                  PRINT *, "Error: Invalid IFUNC value ", IFUNC
+      END SELECT
+
   900 WRITE (MSG,'(I10)') IFUNC
       CALL GRWARN('Unimplemented function in '//TYPE//' device driver:'
      1    //MSG)
@@ -206,7 +256,7 @@ C pen up to start of line, then pen down to end of line
 C Make sure we are doing this in PE mode
       END IF
       IF(.NOT. PEON) THEN
-          INSTR = 'PE7'//INSTR
+          INSTR = 'PE7'//INSTR(:77)
           L = L + 3
           PEON = .TRUE.
           NREL = 0
@@ -235,7 +285,7 @@ C pen up move to position, then pen down
       INSTR = '<'//DUMMY1(1:L1)//DUMMY2(1:L2)
       L = 1 + L1 + L2
       IF(.NOT. PEON) THEN
-          INSTR = 'PE7'//INSTR
+          INSTR = 'PE7'//INSTR(:77)
           L = L + 3
           PEON = .TRUE.
           NREL = 0
@@ -266,7 +316,7 @@ C
 C--- IFUNC=15, Select color index --------------------------------------
 C
   150 CONTINUE
-      IC = RBUF(1)
+      IC = INT(RBUF(1))
 C white ... disable transparency mode.
       IF (IC.EQ.0) THEN
           INSTR = ';TR0SP0FT10,0SV0'
@@ -319,7 +369,7 @@ C--- IFUNC=20, Polygon fill. -------------------------------------------
 C
   200 CONTINUE
       IF (NPTS.EQ.0) THEN
-          NPTS = RBUF(1)
+          NPTS = INT(RBUF(1))
           START = .TRUE.
           RETURN
       ELSE
@@ -365,7 +415,7 @@ C Fudged this ... lines looked too thick, maybe its the res. enhancement.
       LW = RBUF(1) * 0.127 - 0.05
       IF(LW .EQ. 0.0) LW = 0.025
       WRITE(DUMMY,'(F5.3)') LW
-      INSTR = ';PW'//DUMMY
+      INSTR = ';PW'//DUMMY(:77)
       L = 8
       PEON = .FALSE.
       GOTO 800

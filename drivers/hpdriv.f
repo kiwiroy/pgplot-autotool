@@ -20,12 +20,62 @@ C-----------------------------------------------------------------------
       INTEGER      GRHPNC
       INTEGER      GROPTX
       DATA  HPCOL /'A', 'B', 'C', 'D', 'D', 'B', 'C'/
+      UNIT  = 0
+      LASTI = 0
+      LASTJ = 0
 C-----------------------------------------------------------------------
 C
-      GOTO( 10, 20, 30, 40, 50, 60, 70, 80, 90,100,
-     1     110,120,130,140,150,160,170,180,190,200,
-     2     210,220,230), IFUNC
-      GOTO 900
+      SELECT CASE (IFUNC)
+            CASE (1)
+                  GOTO 10
+            CASE (2)
+                  GOTO 20
+            CASE (3)
+                  GOTO 30
+            CASE (4)
+                  GOTO 40
+            CASE (5)
+                  GOTO 50
+            CASE (6)
+                  GOTO 60
+            CASE (7)
+                  GOTO 70
+            CASE (8)
+                  GOTO 80
+            CASE (9)
+                  GOTO 90
+            CASE (10)
+                  GOTO 100
+            CASE (11)
+                  GOTO 110
+            CASE (12)
+                  GOTO 120
+            CASE (13)
+                  GOTO 130
+            CASE (14)
+                  GOTO 140
+            CASE (15)
+                  GOTO 150
+            CASE (16)
+                  GOTO 160
+            CASE (17)
+                  GOTO 170
+            CASE (18)
+                  GOTO 180
+            CASE (19)
+                  GOTO 190
+            CASE (20)
+                  GOTO 200
+            CASE (21)
+                  GOTO 210
+            CASE (22)
+                  GOTO 220
+            CASE (23)
+                  GOTO 230
+            CASE DEFAULT
+                  PRINT *, "Error: Invalid IFUNC value ", IFUNC
+                  GOTO 900
+      END SELECT
 C
 C--- IFUNC = 1, Return device name.-------------------------------------
 C

@@ -64,7 +64,7 @@ C
       XPIX = XMAX - XMIN
       YPIX = YMAX - YMIN
       IF (XMIN .LT. GRXMIN(GRCIDE)) THEN
-         IL = I1 + (GRXMIN(GRCIDE) - XMIN) * (I2 - I1 + 1) / XPIX
+         IL = INT(I1 + (GRXMIN(GRCIDE) - XMIN) * (I2 - I1 + 1) / XPIX)
          XMIN = XMIN + (XPIX * (IL - I1)) / (I2 - I1 + 1)
       ELSE
          IL = I1
@@ -73,7 +73,7 @@ C
 C Don't paint "pixels" completely after right clipping boundary
 C
       IF (GRXMAX(GRCIDE) .LT. XMAX) THEN
-         IR = I2 - (XMAX - GRXMAX(GRCIDE)) * (I2 - I1 + 1) / XPIX + 1
+         IR = INT(I2-(XMAX - GRXMAX(GRCIDE)) * (I2 - I1 + 1) / XPIX+1)
          XMAX = XMIN + (XPIX * (IR - I1 + 1)) /
      1                 (I2 - I1 + 1)
       ELSE
@@ -83,7 +83,7 @@ C
 C Don't paint "pixels" completely under bottom clipping boundary
 C
       IF (YMIN .LT. GRYMIN(GRCIDE)) THEN
-         JB = J1 + (GRYMIN(GRCIDE) - YMIN) * (J2 - J1 + 1) / YPIX
+         JB = INT(J1 + (GRYMIN(GRCIDE) - YMIN) * (J2 - J1 + 1) / YPIX)
          YMIN = YMIN + (YPIX * (JB - J1)) / (J2 - J1 + 1)
       ELSE
          JB = J1
@@ -92,7 +92,7 @@ C
 C Don't paint "pixels" completely above top clipping boundary
 C
       IF (GRYMAX(GRCIDE) .LT. YMAX) THEN
-         JT = J2 - (YMAX - GRYMAX(GRCIDE)) * (J2 - J1 + 1) / YPIX + 1
+         JT = INT(J2-(YMAX - GRYMAX(GRCIDE)) * (J2 - J1 + 1) / YPIX +1)
          YMAX = YMIN + (YPIX * (JT - J1 + 1)) /
      1                 (J2 - J1 + 1)
       ELSE
@@ -103,7 +103,7 @@ C If device accepts image primitives, use GRPXPS
 C
       IF (GRGCAP(GRCIDE)(7:7).EQ.'Q') THEN
          CALL GRPXPS(IA, IDIM, JDIM, IL, IR, JB, JT,
-     1		     XMIN,XMAX,YMIN,YMAX)
+     1       XMIN,XMAX,YMIN,YMAX)
          RETURN
       ENDIF
 C
@@ -122,7 +122,7 @@ C
      1    YPIX .GT. YSIZE + 0.5 * WIDTH) THEN
 *     write (6,*) 'GRPXRE'
          CALL GRPXRE(IA, IDIM, JDIM, IL, IR, JB, JT,
-     1		     XMIN, XMAX, YMIN, YMAX)
+     1       XMIN, XMAX, YMIN, YMAX)
 C
 C Use either pixel primitives or points
 C
@@ -167,7 +167,7 @@ C
          ELSE
 *     write (6,*) 'GRPXPO'
             CALL GRPXPO(IA, IDIM, JDIM, IL, IR, JB, JT,
-     1		     XMIN, XMAX, YMIN, YMAX)
+     1          XMIN, XMAX, YMIN, YMAX)
          ENDIF
       ENDIF
       END

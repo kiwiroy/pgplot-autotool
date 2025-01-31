@@ -48,7 +48,8 @@ C-----------------------------------------------------------------------
       INTEGER   GRPARS, GRTRIM
       REAL      RBUF(6)
       LOGICAL   APPEND
-      CHARACTER(LEN=128) FFILE,CHR
+      CHARACTER(LEN=90) FFILE,CHR
+      DUMMY = DUMMY
 C
 C Initialize GRPCKG; read font file (if necessary).
 C
@@ -103,13 +104,13 @@ C
       IF (APPEND) RBUF(3)=1
       NBUF=3
       CALL GREXEC(GRGTYP, 9,RBUF,NBUF, GRFILE(IDENT),GRFNLN(IDENT))
-      GROPEN=RBUF(2)
+      GROPEN=INT(RBUF(2))
       IF (GROPEN.NE.1) THEN
          IDENT = 0
          RETURN
       END IF
       GRGTYP = GRTYPE(IDENT)
-      GRUNIT(IDENT)=RBUF(1)
+      GRUNIT(IDENT)= INT(RBUF(1))
       GRPLTD(IDENT) = .FALSE.
       GRSTAT(IDENT) = 1
       CALL GRSLCT(IDENT)
@@ -118,8 +119,8 @@ C Install the default plot parameters
 C
 C--- Inquire color-index range.
       CALL GREXEC(GRGTYP, 2,RBUF,NBUF,CHR,LCHR)
-      GRMNCI(IDENT)=RBUF(5)
-      GRMXCI(IDENT)=RBUF(6)
+      GRMNCI(IDENT)=INT(RBUF(5))
+      GRMXCI(IDENT)=INT(RBUF(6))
 C--- Inquire resolution.
       CALL GREXEC(GRGTYP, 3,RBUF,NBUF,CHR,LCHR)
       GRPXPI(IDENT)=RBUF(1)
@@ -130,8 +131,8 @@ C--- Inquire default character size.
       GRCFAC(IDENT) = RBUF(1)
 C--- Inquire default plot size.
       CALL GREXEC(GRGTYP, 6,RBUF,NBUF,CHR,LCHR)
-      GRXMXA(IDENT) = RBUF(2)
-      GRYMXA(IDENT) = RBUF(4)
+      GRXMXA(IDENT) = INT(RBUF(2))
+      GRYMXA(IDENT) = INT(RBUF(4))
       GRXMIN(IDENT) = RBUF(1)
       GRXMAX(IDENT) = RBUF(2)
       GRYMIN(IDENT) = RBUF(3)

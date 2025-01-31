@@ -764,7 +764,7 @@ C
 C
 C  Find first tick.  Return if none.
 C
-      NT = TMIN / TICK
+      NT = INT(TMIN / TICK)
       IF (IS*SD.EQ.1 .AND. ABS(TMIN).GT.ABS(NT)*TICK) NT = NT + SD
       TIME = NT * TICK
       IF ( (SD.EQ. 1.AND.(TIME.LT.TMIN.OR.TIME.GT.TMAX)) .OR.

@@ -213,9 +213,65 @@ C
       DATA STATE/0/
 C-----------------------------------------------------------------------
 C
-      GOTO( 10, 20, 30, 40, 50, 60, 70, 80, 90,100,
-     1     110,120,130,140,150,160,170,180,190,200,
-     2     210,220,230,900,900,260,900,280,290), IFUNC
+      SELECT CASE (IFUNC)
+        CASE (1)
+            GOTO 10
+        CASE (2)
+            GOTO 20
+        CASE (3)
+            GOTO 30
+        CASE (4)
+            GOTO 40
+        CASE (5)
+            GOTO 50
+        CASE (6)
+            GOTO 60
+        CASE (7)
+            GOTO 70
+        CASE (8)
+            GOTO 80
+        CASE (9)
+            GOTO 90
+        CASE (10)
+            GOTO 100
+        CASE (11)
+            GOTO 110
+        CASE (12)
+            GOTO 120
+        CASE (13)
+            GOTO 130
+        CASE (14)
+            GOTO 140
+        CASE (15)
+            GOTO 150
+        CASE (16)
+            GOTO 160
+        CASE (17)
+            GOTO 170
+        CASE (18)
+            GOTO 180
+        CASE (19)
+            GOTO 190
+        CASE (20)
+            GOTO 200
+        CASE (21)
+            GOTO 210
+        CASE (22)
+            GOTO 220
+        CASE (23)
+            GOTO 230
+        CASE (24, 25, 27)  ! These IFUNC values originally jumped to 900
+            GOTO 900
+        CASE (26)
+            GOTO 260
+        CASE (28)
+            GOTO 280
+        CASE (29)
+            GOTO 290
+        CASE DEFAULT
+            GOTO 900
+      END SELECT
+
       GOTO 900
 C
 C--- IFUNC = 1, Return device name.-------------------------------------
@@ -504,11 +560,11 @@ C
   110 CONTINUE
       LANDSC = MODE.EQ.1 .OR. MODE.EQ.3
       IF (LANDSC) THEN
-         HEIGHT = RBUF(1)
-         WIDTH = RBUF(2)
+         HEIGHT = INT(RBUF(1))
+         WIDTH  = INT(RBUF(2))
       ELSE
-         WIDTH = RBUF(1)
-         HEIGHT = RBUF(2)
+         WIDTH  = INT(RBUF(1))
+         HEIGHT = INT(RBUF(2))
       END IF
       NPAGE = NPAGE+1
       CALL GRPS02(IOERR, UNIT, ' ')
@@ -682,7 +738,7 @@ C--- IFUNC=20, Polygon fill. -------------------------------------------
 C
   200 CONTINUE
       IF (NPTS.EQ.0) THEN
-          NPTS = RBUF(1)
+          NPTS = INT(RBUF(1))
           START = .TRUE.
           RETURN
       ELSE
@@ -716,12 +772,12 @@ C--- IFUNC=21, Set color representation. -------------------------------
 C
   210 CONTINUE
       IF (COLOR) THEN
-          CI = RBUF(1)
+          CI = INT(RBUF(1))
           RVALUE(CI) = RBUF(2)
           GVALUE(CI) = RBUF(3)
           BVALUE(CI) = RBUF(4)
       ELSE
-          CI = RBUF(1)
+          CI = INT(RBUF(1))
           RVALUE(CI) = 0.30*RBUF(2) + 0.59*RBUF(3) + 0.11*RBUF(4)
           GVALUE(CI) = RVALUE(CI)
           BVALUE(CI) = RVALUE(CI)
@@ -756,16 +812,16 @@ C
 C--- IFUNC=26, Image.---------------------------------------------------
 C
   260 CONTINUE
-      N = RBUF(1)
+      N = INT(RBUF(1))
       IF (N.EQ.0) THEN
 C         -- First: setup for image
 C         -- Set clipping region (RBUF(2...5))
-          NXP = RBUF(2)
-          NYP = RBUF(3)
-          XORG = RBUF(4)
-          XLEN = RBUF(5) - RBUF(4)
-          YORG = RBUF(6) 
-          YLEN = RBUF(7) - RBUF(6)
+          NXP = INT(RBUF(2))
+          NYP = INT(RBUF(3))
+          XORG = INT(RBUF(4))
+          XLEN = INT(RBUF(5) - RBUF(4))
+          YORG = INT(RBUF(6))
+          YLEN = INT(RBUF(7) - RBUF(6))
           BBXMIN = MIN(BBXMIN, RBUF(4), RBUF(5))
           BBXMAX = MAX(BBXMAX, RBUF(4), RBUF(5))
           BBYMIN = MIN(BBYMIN, RBUF(6), RBUF(7))
@@ -802,7 +858,7 @@ C            in INSTR, so N must be <= 20.
           KMAX = 1
           IF (COLOR) KMAX = 3
           DO 262 I=1,N
-              CI = RBUF(I+1)
+              CI = INT(RBUF(I+1))
               RGB(1) = NINT(255.0*RVALUE(CI))
               RGB(2) = NINT(255.0*GVALUE(CI))
               RGB(3) = NINT(255.0*BVALUE(CI))
@@ -898,10 +954,76 @@ C-----------------------------------------------------------------------
       INTEGER I, N
 C
       IF (NSYM.LT.0 .OR. NSYM.GT.31) RETURN
-      GOTO (100, 101, 102, 103, 104, 105, 106, 107, 108,
-     1      109, 110, 111, 112, 113, 114, 115, 116, 117,
-     2      118, 119, 120, 121, 122, 123, 124, 125, 126,
-     3      127, 128, 129, 130, 131) NSYM+1
+      SELECT CASE (NSYM + 1)
+        CASE (1)
+            GOTO 100
+        CASE (2)
+            GOTO 101
+        CASE (3)
+            GOTO 102
+        CASE (4)
+            GOTO 103
+        CASE (5)
+            GOTO 104
+        CASE (6)
+            GOTO 105
+        CASE (7)
+            GOTO 106
+        CASE (8)
+            GOTO 107
+        CASE (9)
+            GOTO 108
+        CASE (10)
+            GOTO 109
+        CASE (11)
+            GOTO 110
+        CASE (12)
+            GOTO 111
+        CASE (13)
+            GOTO 112
+        CASE (14)
+            GOTO 113
+        CASE (15)
+            GOTO 114
+        CASE (16)
+            GOTO 115
+        CASE (17)
+            GOTO 116
+        CASE (18)
+            GOTO 117
+        CASE (19)
+            GOTO 118
+        CASE (20)
+            GOTO 119
+        CASE (21)
+            GOTO 120
+        CASE (22)
+            GOTO 121
+        CASE (23)
+            GOTO 122
+        CASE (24)
+            GOTO 123
+        CASE (25)
+            GOTO 124
+        CASE (26)
+            GOTO 125
+        CASE (27)
+            GOTO 126
+        CASE (28)
+            GOTO 127
+        CASE (29)
+            GOTO 128
+        CASE (30)
+            GOTO 129
+        CASE (31)
+            GOTO 130
+        CASE (32)
+            GOTO 131
+        CASE DEFAULT
+            PRINT *, "Error: Invalid NSYM value (NSYM + 1 = ",
+     1               NSYM + 1, ")"
+      END SELECT
+
 C
   100 T(1)='/M0 {MB -6 -6 moveto 0 12 rlineto 12 0 rlineto'
       T(2)='0 -12 rlineto closepath stroke ME} bind def'

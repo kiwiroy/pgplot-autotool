@@ -47,10 +47,65 @@ C
       DATA STATE/0/
 C-----------------------------------------------------------------------
 C
-      GOTO( 10, 20, 30, 40, 50, 60, 70, 80, 90,100,
-     1     110,120,130,140,150,160,900,180,900,200,
-     2     210,220,230,240,900,260,900,280,290), IFUNC
-      GOTO 900
+      SELECT CASE (IFUNC)
+            CASE (1)
+                  GOTO 10
+            CASE (2)
+                  GOTO 20
+            CASE (3)
+                  GOTO 30
+            CASE (4)
+                  GOTO 40
+            CASE (5)
+                  GOTO 50
+            CASE (6)
+                  GOTO 60
+            CASE (7)
+                  GOTO 70
+            CASE (8)
+                  GOTO 80
+            CASE (9)
+                  GOTO 90
+            CASE (10)
+                  GOTO 100
+            CASE (11)
+                  GOTO 110
+            CASE (12)
+                  GOTO 120
+            CASE (13)
+                  GOTO 130
+            CASE (14)
+                  GOTO 140
+            CASE (15)
+                  GOTO 150
+            CASE (16)
+                  GOTO 160
+            CASE (17, 19, 25, 27)   ! Entries that originally mapped to 900
+                  GOTO 900
+            CASE (18)
+                  GOTO 180
+            CASE (20)
+                  GOTO 200
+            CASE (21)
+                  GOTO 210
+            CASE (22)
+                  GOTO 220
+            CASE (23)
+                  GOTO 230
+            CASE (24)
+                  GOTO 240
+            CASE (26)
+                  GOTO 260
+            CASE (28)
+                  GOTO 280
+            CASE (29)
+                  GOTO 290
+            CASE DEFAULT
+                  GOTO 900
+      END SELECT
+
+      GOTO 900  ! Preserving the unconditional GOTO 900 at the end
+
 C
 C--- IFUNC = 1, Return device name.-------------------------------------
 C
@@ -206,8 +261,8 @@ C
 C--- IFUNC=11, Begin picture. ------------------------------------------
 C
  110  CONTINUE
-      WIDTH = RBUF(1)
-      HEIGHT = RBUF(2)
+      WIDTH = INT(RBUF(1))
+      HEIGHT = INT(RBUF(2))
       NPAGE = NPAGE+1
       INPIC = 1
       CALL GRFAO('B# # # #', L, INSTR, NPAGE, WIDTH, HEIGHT, DRES)
@@ -293,7 +348,7 @@ C--- IFUNC=20, Polygon fill. -------------------------------------------
 C
  200  CONTINUE
       IF (NPTS.EQ.0) THEN
-          NPTS = RBUF(1)
+          NPTS = INT(RBUF(1))
           CALL GRFAO('Y#', L, INSTR, NPTS, 0, 0, 0)
       ELSE
           NPTS = NPTS-1
@@ -308,7 +363,7 @@ C
 C--- IFUNC=21, Set color representation. -------------------------------
 C
   210 CONTINUE
-      CI = RBUF(1)
+      CI = INT(RBUF(1))
       RVALUE(CI) = NINT(255*RBUF(2))
       GVALUE(CI) = NINT(255*RBUF(3))
       BVALUE(CI) = NINT(255*RBUF(4))

@@ -31,8 +31,8 @@ C-----------------------------------------------------------------------
      1)
       PARAMETER  (DEFFNT='grfont.dat')
       PARAMETER  (DEFRGB='rgb.txt')
-      CHARACTER*255 FF
-      CHARACTER*16 DEFLT
+      CHARACTER(LEN=255) FF
+      CHARACTER(LEN=16) DEFLT
       INTEGER I, L, LD
       LOGICAL TEST, DEBUG
 C

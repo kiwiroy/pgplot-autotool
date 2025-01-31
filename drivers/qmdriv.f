@@ -82,9 +82,57 @@ C=======================================================================
 C
 C ---- Do the best one can in F77 for a "case" statement. --------------
 C
-      GOTO( 10, 20, 30, 40, 50, 60, 70, 80, 90,100,
-     1     110,120,130,140,150,160,170,180,190,200,
-     2     210,220,230), IFUNC
+      SELECT CASE (IFUNC)
+            CASE (1)
+                  GOTO 10
+            CASE (2)
+                  GOTO 20
+            CASE (3)
+                  GOTO 30
+            CASE (4)
+                  GOTO 40
+            CASE (5)
+                  GOTO 50
+            CASE (6)
+                  GOTO 60
+            CASE (7)
+                  GOTO 70
+            CASE (8)
+                  GOTO 80
+            CASE (9)
+                  GOTO 90
+            CASE (10)
+                  GOTO 100
+            CASE (11)
+                  GOTO 110
+            CASE (12)
+                  GOTO 120
+            CASE (13)
+                  GOTO 130
+            CASE (14)
+                  GOTO 140
+            CASE (15)
+                  GOTO 150
+            CASE (16)
+                  GOTO 160
+            CASE (17)
+                  GOTO 170
+            CASE (18)
+                  GOTO 180
+            CASE (19)
+                  GOTO 190
+            CASE (20)
+                  GOTO 200
+            CASE (21)
+                  GOTO 210
+            CASE (22)
+                  GOTO 220
+            CASE (23)
+                  GOTO 230
+            CASE DEFAULT
+                  PRINT *, "Error: Invalid IFUNC value ", IFUNC
+                  GOTO 900
+      END SELECT
 C
 C ---- Unknown opcode/function; most likely a logic error somewhere ----
 C
@@ -358,7 +406,7 @@ C
 C--- IFUNC=15, Select color index --------------------------------------
 C
   150 CONTINUE
-      IC = RBUF(1)
+      IC = INT(RBUF(1))
       IF (IC.LT.0 .OR. IC.GT.1) THEN
           IC = 1
           RBUF(1) = IC
@@ -393,7 +441,21 @@ C
 C
 C     -- Convert PGPLOT line styles 1 thru 5 to QUIC equivalents
 C
-      GOTO (191,192,193,194,195) ISTYLE
+      SELECT CASE (ISTYLE)
+            CASE (1)
+                  GOTO 191
+            CASE (2)
+                  GOTO 192
+            CASE (3)
+                  GOTO 193
+            CASE (4)
+                  GOTO 194
+            CASE (5)
+                  GOTO 195
+            CASE DEFAULT
+                  PRINT *, "Error: Invalid ISTYLE value ", ISTYLE
+      END SELECT
+
 C
 C     Select ISTYLE in CASE:
 C     Full line
@@ -435,7 +497,7 @@ C
 C
 C        -- First time so set number of points in polygon
 C
-         NPTS = RBUF(1)
+         NPTS = INT(RBUF(1))
          IF (BUFLEN+8 .GE. MAXLEN) CALL GRQM00 (UNIT, BUFFER, BUFLEN)
 C
 C        -- Use black fill, no border (in case PGPLOT doesn't go back to

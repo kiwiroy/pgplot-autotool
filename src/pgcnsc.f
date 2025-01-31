@@ -39,16 +39,11 @@ C-----------------------------------------------------------------------
       INTEGER  MAXEMX, MAXEMY
       PARAMETER (MAXEMX=100, MAXEMY=100)
 C
-      LOGICAL FLAGS(MAXEMX,MAXEMY,2), RANGE
+      LOGICAL FLAGS(MAXEMX,MAXEMY,2)
       INTEGER I, J, II, JJ, DIR
-      REAL Z1, Z2, Z3, P, P1, P2
-C
-C The statement function RANGE decides whether a contour at level P
-C crosses the line between two gridpoints with values P1 and P2. It is
-C important that a contour cannot cross a line with equal endpoints.
-C
-      RANGE (P,P1,P2) = (P.GT.MIN(P1,P2)) .AND. (P.LE.MAX(P1,P2))
-     1                  .AND. (P1.NE.P2)
+      REAL Z1, Z2, Z3
+
+
 C
 C Check for errors.
 C
@@ -75,11 +70,11 @@ C
               FLAGS(II,JJ,2) = .FALSE.
               IF (I.LT.IB) THEN
                 Z2 = Z(I+1,J)
-                IF (RANGE(Z0,Z1,Z2)) FLAGS(II,JJ,1) = .TRUE.
+                IF (NSCRANGE(Z0,Z1,Z2)) FLAGS(II,JJ,1) = .TRUE.
               END IF
               IF (J.LT.JB) THEN
                 Z3 = Z(I,J+1)
-                IF (RANGE(Z0,Z1,Z3)) FLAGS(II,JJ,2) = .TRUE.
+                IF (NSCRANGE(Z0,Z1,Z3)) FLAGS(II,JJ,2) = .TRUE.
               END IF
    10     CONTINUE
    20 CONTINUE
@@ -164,4 +159,16 @@ C
 C We didn't find any more crossing points: we're finished.
 C
       RETURN
-      END
+
+      CONTAINS
+C
+C The statement function NSCRANGE decides whether a contour at level P
+C crosses the line between two gridpoints with values P1 and P2. It is
+C important that a contour cannot cross a line with equal endpoints.
+C
+      LOGICAL FUNCTION NSCRANGE(P, P1, P2)
+        REAL, INTENT(IN) :: P, P1, P2
+        NSCRANGE = (P.GT.MIN(P1,P2)) .AND. (P.LE.MAX(P1,P2))
+     1             .AND. (P1.NE.P2)
+      END FUNCTION NSCRANGE
+      END SUBROUTINE PGCNSC

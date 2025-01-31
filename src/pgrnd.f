@@ -33,7 +33,7 @@ C
       END IF
       XX   = ABS(X)
       XLOG = LOG10(XX)
-      ILOG = XLOG
+      ILOG = INT(XLOG)
       IF (XLOG.LT.0) ILOG=ILOG-1
       PWR  = 10.0**ILOG
       FRAC = XX/PWR

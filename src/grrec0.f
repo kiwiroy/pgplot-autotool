@@ -87,7 +87,7 @@ C
 C
 C Draw horizontal raster lines.
 C
-      NLINES = ABS((YMAX-YMIN)/DY)
+      NLINES = INT(ABS((YMAX-YMIN)/DY))
       Y = YMIN - DY/2.0
       DO 40 I=1,NLINES
          Y = Y + DY

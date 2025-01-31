@@ -14,6 +14,7 @@ C-----------------------------------------------------------------------
       REAL Z(MX,*)
       REAL Z0, X, Y, STARTX, STARTY
       EXTERNAL PLOT
+      MY = MY
 C
       I = IS
       J = JS
@@ -52,7 +53,18 @@ C
 CD    WRITE (*,*) I,J,DIR
       II = 1 + I - IA
       JJ = 1 + J - JA
-      GOTO (110, 120, 130, 140), DIR
+      SELECT CASE (DIR)
+          CASE (1)
+              GOTO 110
+          CASE (2)
+              GOTO 120
+          CASE (3)
+              GOTO 130
+          CASE (4)
+              GOTO 140
+          CASE DEFAULT
+              GOTO 100
+      END SELECT
 C
 C DIR = UP
 C

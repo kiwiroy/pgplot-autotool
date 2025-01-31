@@ -142,12 +142,12 @@ C
           P = P + ND - 1
           IF (FORM.NE.2 .AND. P.EQ.-1) THEN
               TEMP = WORK
-              WORK = '0'//TEMP
+              WORK = '0'//TEMP(:19)
               ND = ND+1
               P = 0
           ELSE IF (FORM.NE.2 .AND. P.EQ.-2) THEN
               TEMP = WORK
-              WORK = '00'//TEMP
+              WORK = '00'//TEMP(:18)
               ND = ND+2
               P = 0
           END IF

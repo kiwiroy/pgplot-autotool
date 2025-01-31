@@ -51,7 +51,38 @@ C-----------------------------------------------------------------------
       CHARACTER(LEN=1)   BS
       SAVE LUN, BS, BX, BY, STATE
 C-----------------------------------------------------------------------
-      GOTO(10,20,30,40,50,60,70,80,90,100,110,120,130,140)OPCODE
+      SELECT CASE (OPCODE)
+            CASE (1)
+                  GOTO 10
+            CASE (2)
+                  GOTO 20
+            CASE (3)
+                  GOTO 30
+            CASE (4)
+                  GOTO 40
+            CASE (5)
+                  GOTO 50
+            CASE (6)
+                  GOTO 60
+            CASE (7)
+                  GOTO 70
+            CASE (8)
+                  GOTO 80
+            CASE (9)
+                  GOTO 90
+            CASE (10)
+                  GOTO 100
+            CASE (11)
+                  GOTO 110
+            CASE (12)
+                  GOTO 120
+            CASE (13)
+                  GOTO 130
+            CASE (14)
+                  GOTO 140
+            CASE DEFAULT
+                  PRINT *, "Error: Invalid OPCODE value ", OPCODE
+      END SELECT
       NBUF=-1
       RETURN
 C-----------------------------------------------------------------------
@@ -152,10 +183,10 @@ C--- IFUNC=12, Draw line -----------------------------------------------
       Y1=RBUF(2)
       X2=RBUF(3)
       Y2=RBUF(4)
-      IXO=X1
-      IYO=Y1
-      IXPS=X2
-      IYPS=Y2
+      IXO=INT(X1)
+      IYO=INT(Y1)
+      IXPS=INT(X2)
+      IYPS=INT(Y2)
 C vertical lines
       IF(IXPS.EQ.IXO) THEN
          LENGTH=ABS(IYPS-IYO)

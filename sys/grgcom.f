@@ -24,7 +24,7 @@ C
       GRGCOM = 0
       L = 0
       IER = 0
-      WRITE (*, '(1X,A,$)', IOSTAT=IER) PROMPT
+      WRITE (*, '(1X,A)', ADVANCE='NO', IOSTAT=IER) PROMPT
       IF (IER.EQ.0) READ (*, '(A)', IOSTAT=IER) STRING
       IF (IER.EQ.0) GRGCOM = 1
       L = LEN(STRING)

@@ -61,7 +61,7 @@ C
       CALL PGBBUF
 C
       DO 130 J=J1+1,J2
-      DO 130 I=I1+1,I2
+      DO 170 I=I1+1,I2
           DVAL(1) = A(I-1,J)
           DVAL(2) = A(I-1,J-1)
           DVAL(3) = A(I,J-1)
@@ -75,7 +75,18 @@ C
      1    .OR.(DVAL(ICORN).GE.CTR .AND. DVAL(ICORN+1).GE.CTR) ) GOTO 120
             NPT=NPT+1
             DELTA = (CTR-DVAL(ICORN))/(DVAL(ICORN+1)-DVAL(ICORN))
-            GOTO (60,70,60,70), ICORN
+            SELECT CASE (ICORN)
+              CASE (1)
+                GOTO 60
+              CASE (2)
+                GOTO 70
+              CASE (3)
+                GOTO 60
+              CASE (4)
+                GOTO 70
+              CASE DEFAULT
+                PRINT *, "Invalid ICORN value!"
+            END SELECT
 C
    60       XX = I+IDELT(ICORN+1)
             YY = REAL(J+IDELT(ICORN)) + 
@@ -135,6 +146,7 @@ C            taken to avoid going off the edge.
             END IF
           END IF
   110     CONTINUE
+  170 CONTINUE
   130 CONTINUE
 C
       CALL PGEBUF

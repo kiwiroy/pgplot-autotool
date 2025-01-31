@@ -17,14 +17,11 @@ C  6-Sep-1989 - Changes for standard Fortran-77 [TJP].
 C-----------------------------------------------------------------------
       INCLUDE 'grpckg1.inc'
 C
-      REAL ADJUST, ARG1, ARG2, ALFARG
       REAL SCALE, SEGLEN, X1, X0, Y1, Y0, DS, DSOLD
       REAL ALPHA1, ALPHA2, XP, YP, XQ, YQ
       LOGICAL RESET
       INTEGER THICK
       INTRINSIC ABS, MIN, MOD, REAL, SQRT
-C
-      ADJUST(ARG1,ARG2,ALFARG) = ALFARG*(ARG2 - ARG1) + ARG1
 C
       THICK = GRWIDT(GRCIDE)
       SCALE = SQRT(REAL(ABS(THICK)))
@@ -69,4 +66,10 @@ C
       GRIPAT(GRCIDE) = MOD(GRIPAT(GRCIDE),8) + 1
       GRPOFF(GRCIDE) = 0.0
       GO TO 10
-      END
+
+      CONTAINS
+      REAL FUNCTION ADJUST(ARG1, ARG2, ALFARG)
+          REAL, INTENT(IN) :: ARG1, ARG2, ALFARG
+          ADJUST = ALFARG * (ARG2 - ARG1) + ARG1
+      END FUNCTION ADJUST
+      END SUBROUTINE GRLIN1

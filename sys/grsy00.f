@@ -60,7 +60,7 @@ C-----------------------------------------------------------------------
       PARAMETER (MAXCHR=3000)
       PARAMETER (MAXBUF=27000)
 C
-      INTEGER*2  BUFFER(MAXBUF)
+      INTEGER :: BUFFER(MAXBUF)
       INTEGER    FNTFIL, IER, INDEX(MAXCHR), NC1, NC2, NC3
       INTEGER    L, GRTRIM, I
       COMMON     /GRSYMB/ NC1, NC2, INDEX, BUFFER
